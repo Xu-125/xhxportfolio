@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xu Haoxuan 个人简历</title>
+<style>
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+ :root {
+ --bg: #FAF6EF; --bg-soft: #F4EEE2; --bg-paper: #F7F1E5; --card: #FFFCF5;
+ --ink: #2C2416; --ink-soft: #4A3F2F; --muted: #8A7E6E; --line: #E5DCC8;
+ --c-orange: #E8A87C; --c-orange-d: #C97A4A; --c-rose: #D8A7B1; --c-rose-d: #A86577;
+ --c-sage: #9CAF9F; --c-sage-d: #5C7560; --c-gold: #D9B26B; --c-gold-d: #8A6A30;
+ --c-purple: #B4A0C8; --c-purple-d: #6E5A8A; --c-sky: #A8C5D6; --c-sky-d: #5A7A8C;
+ }
+ html { scroll-behavior: smooth; }
+ body { font-family: "STZhongsong","华文中宋","STSong","宋体","PingFang SC",serif; background: var(--bg); color: var(--ink); line-height: 1.8; overflow-x: hidden; letter-spacing: 0.5px; }
+ body::before { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+   background-image: radial-gradient(circle at 15% 25%, rgba(232,168,124,0.12), transparent 45%),
+   radial-gradient(circle at 85% 65%, rgba(216,167,177,0.12), transparent 45%),
+   radial-gradient(circle at 50% 90%, rgba(156,175,159,0.08), transparent 45%); }
+ .cursor-glow { position: fixed; width: 380px; height: 380px; border-radius: 50%;
+   background: radial-gradient(circle, rgba(232,168,124,0.18), transparent 60%);
+   pointer-events: none; z-index: 1; transform: translate(-50%,-50%); transition: opacity 0.4s; opacity: 0; will-change: transform; }
+ .doodle { position: absolute; pointer-events: none; z-index: 2; }
+ .bob { animation: bob 5s ease-in-out infinite; }
+ .bob-slow { animation: bob 7s ease-in-out infinite; }
+ .wiggle { animation: wiggle 6s ease-in-out infinite; }
+ .pulse { animation: pulse 4s ease-in-out infinite; }
+ .float-l { animation: floatL 8s ease-in-out infinite; }
+ .float-r { animation: floatR 8s ease-in-out infinite; }
+ @keyframes spin { to { transform: rotate(360deg); } }
+ @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+ @keyframes wiggle { 0%,100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
+ @keyframes pulse { 0%,100% { transform: scale(1); opacity: 0.85; } 50% { transform: scale(1.12); opacity: 1; } }
+ @keyframes floatL { 0%,100% { transform: translate(0,0) rotate(0); } 50% { transform: translate(-15px,-20px) rotate(8deg); } }
+ @keyframes floatR { 0%,100% { transform: translate(0,0) rotate(0); } 50% { transform: translate(15px,-20px) rotate(-8deg); } }
+ .hand { stroke: var(--ink); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+ .twinkle { animation: twinkle 2.5s ease-in-out infinite; }
+ @keyframes twinkle { 0%,100% { opacity: 0.3; transform: scale(0.85); } 50% { opacity: 1; transform: scale(1.1); } }
+ nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(250,246,239,0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); padding: 18px 40px; display: flex; justify-content: space-between; align-items: center; z-index: 100; border-bottom: 1.5px solid var(--ink); transition: all .4s; }
+ nav.scrolled { padding: 12px 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+ nav .logo { font-weight: 700; font-size: 19px; letter-spacing: 2px; color: var(--ink); display: flex; align-items: center; gap: 10px; }
+ nav .logo svg { width: 26px; height: 26px; animation: spin 30s linear infinite; }
+ nav ul { display: flex; gap: 32px; list-style: none; }
+ nav a { color: var(--ink); text-decoration: none; font-size: 14px; position: relative; padding: 4px 0; transition: transform 0.3s; }
+ nav a:hover { transform: translateY(-2px); }
+ nav a::after { content: ""; position: absolute; bottom: -4px; left: 50%; width: 0; height: 6px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 6' preserveAspectRatio='none'%3E%3Cpath d='M2 4 Q15 -1 30 3 T58 3' stroke='%23E8A87C' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-size: 100% 100%; transition: all .4s; }
+ nav a:hover::after { left: 0; width: 100%; }
+ .hero { min-height: 100vh; position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; padding: 120px 40px 80px; }
+ .hero-content { max-width: 1000px; text-align: center; position: relative; z-index: 3; }
+ .hero .greet { display: inline-flex; align-items: center; gap: 10px; padding: 8px 22px; border-radius: 24px; background: var(--card); border: 1.5px solid var(--ink); color: var(--ink); font-size: 13px; margin-bottom: 24px; animation: fadeInDown 1s ease; letter-spacing: 1px; box-shadow: 3px 3px 0 var(--c-orange); }
+ .hero .position-tag { display: inline-block; font-size: 14px; color: var(--muted); margin-bottom: 22px; letter-spacing: 4px; opacity: 0; animation: fadeIn 1s ease .8s forwards; }
+ .hero .position-tag span { color: var(--c-orange-d); font-weight: 700; margin: 0 6px; display: inline-block; animation: tagPulse 3s ease-in-out infinite; }
+ .hero .position-tag span:nth-child(2) { animation-delay: 0.5s; }
+ @keyframes tagPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+ .hero h1 { font-size: clamp(36px,5.2vw,60px); font-weight: 700; line-height: 1.35; margin-bottom: 28px; letter-spacing: 2px; color: var(--ink); }
+ .hero h1 .line { display: block; opacity: 0; transform: translateY(30px); }
+ .hero h1 .line.show { animation: slideUp 1s ease forwards; }
+ .hero h1 .line:nth-child(1) { animation-delay: .2s; }
+ .hero h1 .line:nth-child(2) { animation-delay: .5s; }
+ .underline-doodle { position: relative; display: inline-block; color: var(--ink); }
+ .underline-doodle svg { position: absolute; bottom: -10px; left: 0; width: 100%; height: 12px; }
+ .underline-doodle.uc1 { color: var(--c-orange-d); }
+ .underline-doodle.uc2 { color: var(--c-rose-d); }
+ .underline-doodle.uc3 { color: var(--c-sage-d); }
+ .typewriter { font-size: 18px; color: var(--muted); margin-bottom: 32px; min-height: 32px; letter-spacing: 1px; }
+ .typewriter .cursor { display: inline-block; width: 2px; height: 20px; background: var(--c-orange-d); margin-left: 4px; vertical-align: middle; animation: blink 1s infinite; }
+ @keyframes blink { 50% { opacity: 0; } }
+ .core-strengths { margin-top: 36px; display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; max-width: 880px; margin-left: auto; margin-right: auto; opacity: 0; animation: fadeIn 1s ease 1.2s forwards; }
+ .core-strength { background: var(--card); border: 1.5px solid var(--ink); border-radius: 18px; padding: 16px 12px; transition: all .4s cubic-bezier(.4,0,.2,1); text-align: center; cursor: default; }
+ .core-strength:nth-child(1) { box-shadow: 4px 4px 0 var(--c-orange); }
+ .core-strength:nth-child(2) { box-shadow: 4px 4px 0 var(--c-rose); }
+ .core-strength:nth-child(3) { box-shadow: 4px 4px 0 var(--c-sage); }
+ .core-strength:nth-child(4) { box-shadow: 4px 4px 0 var(--c-purple); }
+ .core-strength:hover { transform: translate(-2px,-2px) rotate(-1deg); }
+ .core-strength:nth-child(1):hover { box-shadow: 7px 7px 0 var(--c-orange); }
+ .core-strength:nth-child(2):hover { box-shadow: 7px 7px 0 var(--c-rose); }
+ .core-strength:nth-child(3):hover { box-shadow: 7px 7px 0 var(--c-sage); }
+ .core-strength:nth-child(4):hover { box-shadow: 7px 7px 0 var(--c-purple); }
+ .core-strength .cs-emoji { font-size: 22px; margin-bottom: 6px; display: block; transition: transform .4s; }
+ .core-strength:hover .cs-emoji { transform: scale(1.2) rotate(-8deg); }
+ .core-strength .cs-title { font-size: 14px; font-weight: 700; color: var(--ink); letter-spacing: 1.5px; margin-bottom: 4px; }
+ .core-strength .cs-sub { font-size: 11px; color: var(--muted); }
+ .scroll-hint { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); font-size: 12px; color: var(--muted); letter-spacing: 4px; animation: bounce 2s infinite; z-index: 3; }
+ .scroll-hint::after { content: "↓"; display: block; margin-top: 4px; font-size: 16px; }
+ @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+ section { padding: 120px 40px; position: relative; z-index: 1; }
+ .container { max-width: 1240px; margin: 0 auto; position: relative; }
+ .section-eyebrow { font-size: 13px; color: var(--c-orange-d); letter-spacing: 6px; text-transform: uppercase; margin-bottom: 14px; opacity: 0; transform: translateX(-20px); transition: all .8s; display: flex; align-items: center; gap: 12px; }
+ .section-eyebrow::before { content: ""; width: 30px; height: 2px; background: var(--c-orange-d); }
+ .section-heading { font-size: clamp(30px,4.4vw,48px); font-weight: 700; margin-bottom: 16px; letter-spacing: 3px; opacity: 0; transform: translateX(-20px); transition: all .8s .15s; position: relative; display: inline-block; color: var(--ink); }
+ .section-heading::after { content: ""; display: block; width: 80px; height: 8px; margin-top: 14px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 8' preserveAspectRatio='none'%3E%3Cpath d='M2 5 Q20 -1 40 4 T78 4' stroke='%23E8A87C' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-size: 100% 100%; }
+ .section-sub { font-size: 17px; color: var(--ink-soft); max-width: 760px; margin-top: 26px; margin-bottom: 56px; line-height: 2; opacity: 0; transform: translateY(20px); transition: all .8s .25s; }
+ .section-sub strong { color: var(--ink); font-weight: 700; }
+ .reveal.show .section-eyebrow, .reveal.show .section-heading, .reveal.show .section-sub { opacity: 1; transform: translateX(0) translateY(0); }
+ .why-section { background: var(--bg-soft); }
+ .why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; margin-top: 20px; }
+ .why-card { padding: 36px 30px 32px; border-radius: 24px; background: var(--card); border: 1.5px solid var(--ink); transition: all .5s cubic-bezier(.4,0,.2,1); position: relative; overflow: hidden; display: flex; flex-direction: column; }
+ .why-card:nth-child(1) { box-shadow: 7px 7px 0 var(--c-orange); }
+ .why-card:nth-child(2) { box-shadow: 7px 7px 0 var(--c-rose); }
+ .why-card:nth-child(3) { box-shadow: 7px 7px 0 var(--c-sage); }
+ .why-card::before { content: ""; position: absolute; top: 0; left: -120%; width: 120%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent); transition: left .8s; pointer-events: none; }
+ .why-card:hover { transform: translate(-3px,-3px); }
+ .why-card:nth-child(1):hover { box-shadow: 11px 11px 0 var(--c-orange); }
+ .why-card:nth-child(2):hover { box-shadow: 11px 11px 0 var(--c-rose); }
+ .why-card:nth-child(3):hover { box-shadow: 11px 11px 0 var(--c-sage); }
+ .why-card:hover::before { left: 120%; }
+ .why-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px; }
+ .why-num-big { font-size: 60px; font-weight: 800; line-height: 1; letter-spacing: -1px; background: linear-gradient(180deg, var(--ink), var(--muted)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; opacity: 0.25; }
+ .why-icon-big { width: 60px; height: 60px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 28px; border: 1.5px solid var(--ink); transition: transform .5s; }
+ .why-card:nth-child(1) .why-icon-big { background: rgba(232,168,124,0.28); }
+ .why-card:nth-child(2) .why-icon-big { background: rgba(216,167,177,0.32); }
+ .why-card:nth-child(3) .why-icon-big { background: rgba(156,175,159,0.32); }
+ .why-card:hover .why-icon-big { transform: scale(1.15) rotate(-10deg); }
+ .why-card h3 { font-size: 24px; margin-bottom: 6px; letter-spacing: 1.5px; color: var(--ink); font-weight: 700; }
+ .why-punchline { font-size: 13.5px; color: var(--c-orange-d); font-weight: 700; letter-spacing: 1px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1.5px dashed var(--line); }
+ .why-card:nth-child(2) .why-punchline { color: var(--c-rose-d); }
+ .why-card:nth-child(3) .why-punchline { color: var(--c-sage-d); }
+ .why-points { list-style: none; margin-bottom: 24px; flex: 1; }
+ .why-points li { font-size: 14px; color: var(--ink-soft); line-height: 1.85; margin-bottom: 10px; padding-left: 22px; position: relative; }
+ .why-points li::before { content: "✓"; position: absolute; left: 0; top: 0; width: 16px; height: 16px; background: var(--ink); color: var(--card); border-radius: 50%; font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: 4px; }
+ .why-points li strong { color: var(--ink); font-weight: 700; }
+ .why-badge { background: var(--bg-paper); border: 1.5px solid var(--ink); border-radius: 14px; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+ .why-badge-num { font-size: 22px; font-weight: 800; color: var(--c-orange-d); }
+ .why-card:nth-child(2) .why-badge-num { color: var(--c-rose-d); }
+ .why-card:nth-child(3) .why-badge-num { color: var(--c-sage-d); }
+ .why-badge-label { font-size: 11.5px; color: var(--ink-soft); text-align: right; line-height: 1.4; }
+ .about-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 40px; align-items: stretch; }
+ .about-text { background: var(--card); border-radius: 24px; padding: 46px; border: 1.5px solid var(--ink); box-shadow: 8px 8px 0 var(--c-orange); position: relative; transform: rotate(-0.3deg); display: flex; flex-direction: column; justify-content: center; transition: all .4s; }
+ .about-text:hover { transform: rotate(0deg) translate(-2px,-2px); box-shadow: 12px 12px 0 var(--c-orange); }
+ .about-text .pin { position: absolute; top: -22px; left: 32px; width: 50px; height: 60px; }
+ .about-text .stamp { position: absolute; top: 20px; right: 20px; width: 80px; height: 80px; opacity: 0.7; transform: rotate(12deg); transition: transform .6s; }
+ .about-text:hover .stamp { transform: rotate(372deg); }
+ .about-text p { font-size: 15.5px; color: var(--ink-soft); line-height: 2; margin-bottom: 14px; }
+ .about-text p:first-of-type { margin-top: 12px; }
+ .about-text p:last-child { margin-bottom: 0; }
+ .about-text .keyword { background: linear-gradient(180deg, transparent 62%, rgba(232,168,124,0.45) 62%); padding: 0 4px; font-weight: 700; color: var(--ink); }
+ .about-text .keyword.k2 { background: linear-gradient(180deg, transparent 62%, rgba(156,175,159,0.50) 62%); }
+ .about-text .keyword.k3 { background: linear-gradient(180deg, transparent 62%, rgba(216,167,177,0.50) 62%); }
+ .about-text .keyword.k4 { background: linear-gradient(180deg, transparent 62%, rgba(180,160,200,0.50) 62%); }
+ .skill-block { display: grid; grid-template-rows: repeat(3,1fr); gap: 18px; }
+ .skill-card { background: var(--card); border-radius: 20px; padding: 24px 28px; border: 1.5px solid var(--ink); transition: all .4s; position: relative; display: flex; flex-direction: column; justify-content: center; }
+ .skill-card:nth-child(1) { box-shadow: 5px 5px 0 var(--c-rose); }
+ .skill-card:nth-child(2) { box-shadow: 5px 5px 0 var(--c-sage); }
+ .skill-card:nth-child(3) { box-shadow: 5px 5px 0 var(--c-purple); }
+ .skill-card:hover { transform: translate(-3px,-3px); }
+ .skill-card:nth-child(1):hover { box-shadow: 8px 8px 0 var(--c-rose); }
+ .skill-card:nth-child(2):hover { box-shadow: 8px 8px 0 var(--c-sage); }
+ .skill-card:nth-child(3):hover { box-shadow: 8px 8px 0 var(--c-purple); }
+ .skill-head { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+ .skill-icon { width: 42px; height: 42px; border-radius: 12px; background: var(--bg-paper); display: flex; align-items: center; justify-content: center; border: 1.5px solid var(--ink); font-size: 18px; }
+ .skill-card h4 { font-size: 15px; letter-spacing: 1px; color: var(--ink); }
+ .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+ .skill-tag { padding: 5px 12px; border-radius: 12px; background: var(--bg-paper); font-size: 11.5px; color: var(--ink); border: 1.5px solid var(--line); transition: all .3s; cursor: default; }
+ .skill-tag:hover { background: var(--ink); color: var(--bg); transform: translateY(-2px) rotate(-3deg); }
+ .stats-top { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-bottom: 24px; }
+ .stat-hero { background: var(--card); padding: 36px 30px; border-radius: 22px; border: 1.5px solid var(--ink); transition: all .5s cubic-bezier(.4,0,.2,1); }
+ .stat-hero:nth-child(1) { box-shadow: 7px 7px 0 var(--c-orange); }
+ .stat-hero:nth-child(2) { box-shadow: 7px 7px 0 var(--c-rose); }
+ .stat-hero:nth-child(3) { box-shadow: 7px 7px 0 var(--c-sage); }
+ .stat-hero:hover { transform: translate(-3px,-3px); }
+ .stat-hero:nth-child(1):hover { box-shadow: 11px 11px 0 var(--c-orange); }
+ .stat-hero:nth-child(2):hover { box-shadow: 11px 11px 0 var(--c-rose); }
+ .stat-hero:nth-child(3):hover { box-shadow: 11px 11px 0 var(--c-sage); }
+ .stat-hero-tag { display: inline-block; font-size: 11px; padding: 3px 10px; border-radius: 8px; background: var(--bg-paper); color: var(--ink-soft); border: 1.5px solid var(--line); margin-bottom: 16px; letter-spacing: 1.5px; font-weight: 700; }
+ .stat-hero-num { font-size: 56px; font-weight: 800; line-height: 1; color: var(--ink); letter-spacing: -1px; margin-bottom: 10px; display: flex; align-items: baseline; gap: 4px; }
+ .stat-hero-num small { font-size: 22px; color: var(--muted); font-weight: 600; }
+ .stat-hero-label { font-size: 14.5px; color: var(--ink); font-weight: 700; margin-bottom: 6px; letter-spacing: 1px; }
+ .stat-hero-from { font-size: 12px; color: var(--muted); }
+ .stats-bottom { display: grid; grid-template-columns: repeat(5,1fr); gap: 16px; }
+ .stat-mini { background: var(--card); padding: 24px 16px; border-radius: 16px; text-align: center; border: 1.5px solid var(--ink); transition: all .4s cubic-bezier(.4,0,.2,1); }
+ .stat-mini:nth-child(5n+1) { box-shadow: 4px 4px 0 var(--c-gold); }
+ .stat-mini:nth-child(5n+2) { box-shadow: 4px 4px 0 var(--c-purple); }
+ .stat-mini:nth-child(5n+3) { box-shadow: 4px 4px 0 var(--c-sky); }
+ .stat-mini:nth-child(5n+4) { box-shadow: 4px 4px 0 var(--c-orange); }
+ .stat-mini:nth-child(5n+5) { box-shadow: 4px 4px 0 var(--c-rose); }
+ .stat-mini:hover { transform: translate(-2px,-2px) rotate(-1deg); }
+ .stat-mini:nth-child(5n+1):hover { box-shadow: 7px 7px 0 var(--c-gold); }
+ .stat-mini:nth-child(5n+2):hover { box-shadow: 7px 7px 0 var(--c-purple); }
+ .stat-mini:nth-child(5n+3):hover { box-shadow: 7px 7px 0 var(--c-sky); }
+ .stat-mini:nth-child(5n+4):hover { box-shadow: 7px 7px 0 var(--c-orange); }
+ .stat-mini:nth-child(5n+5):hover { box-shadow: 7px 7px 0 var(--c-rose); }
+ .stat-mini-num { font-size: 26px; font-weight: 800; color: var(--ink); line-height: 1.1; margin-bottom: 6px; }
+ .stat-mini-num small { font-size: 14px; color: var(--muted); }
+ .stat-mini-label { font-size: 11.5px; color: var(--ink-soft); line-height: 1.5; }
+ .featured { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+ .feature-card { background: var(--card); border-radius: 24px; padding: 0; transition: all .5s cubic-bezier(.4,0,.2,1); border: 1.5px solid var(--ink); position: relative; overflow: hidden; box-shadow: 8px 8px 0 var(--c-orange); }
+ .feature-card:nth-child(2) { box-shadow: 8px 8px 0 var(--c-rose); }
+ .feature-card:hover { transform: translate(-4px,-4px); box-shadow: 14px 14px 0 var(--c-orange); }
+ .feature-card:nth-child(2):hover { box-shadow: 14px 14px 0 var(--c-rose); }
+ .feature-preview { width: 100%; height: 280px; position: relative; overflow: hidden; border-bottom: 1.5px solid var(--ink); }
+ .browser-bar { position: absolute; top: 0; left: 0; right: 0; height: 36px; background: var(--card); display: flex; align-items: center; padding: 0 14px; gap: 6px; z-index: 3; border-bottom: 1.5px solid var(--ink); }
+ .browser-bar .dot { width: 11px; height: 11px; border-radius: 50%; border: 1.5px solid var(--ink); }
+ .browser-bar .dot.r { background: #FF8A85; }
+ .browser-bar .dot.y { background: #FFD86E; }
+ .browser-bar .dot.g { background: #7BD691; }
+ .browser-bar .url { margin-left: 14px; font-size: 11px; color: var(--muted); background: var(--bg-paper); padding: 3px 12px; border-radius: 10px; border: 1px solid var(--line); }
+ .mock-game { position: absolute; top: 36px; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, #FFE5D0, #F5C8D0); display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; }
+ .mock-game .stars { position: absolute; inset: 0; }
+ .mock-game .stars svg { position: absolute; }
+ .mock-game .game-title { font-size: 26px; font-weight: 800; color: var(--ink); margin-bottom: 16px; letter-spacing: 4px; z-index: 2; }
+ .mock-game .game-character { width: 90px; height: 90px; background: var(--card); border: 2px solid var(--ink); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; box-shadow: 4px 4px 0 var(--ink); animation: bob 3s ease-in-out infinite; z-index: 2; }
+ .mock-game .game-btn { padding: 10px 26px; background: var(--ink); color: var(--card); border: 2px solid var(--ink); border-radius: 24px; font-weight: 700; font-size: 13px; letter-spacing: 2px; z-index: 2; }
+ .mock-web { position: absolute; top: 36px; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, #E8EFE8, #DCE5DC); padding: 22px; overflow: hidden; }
+ .mock-web .web-nav { display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1.5px solid var(--ink); margin-bottom: 18px; }
+ .mock-web .web-logo { font-weight: 800; font-size: 14px; letter-spacing: 2px; color: var(--ink); }
+ .mock-web .web-menu { display: flex; gap: 14px; }
+ .mock-web .web-menu span { width: 28px; height: 6px; background: var(--ink); border-radius: 3px; }
+ .mock-web .web-hero { text-align: center; padding: 4px 0; }
+ .mock-web .web-tag { display: inline-block; padding: 3px 12px; background: var(--card); border: 1.5px solid var(--ink); border-radius: 12px; font-size: 10px; margin-bottom: 10px; }
+ .mock-web .web-title { font-size: 22px; font-weight: 800; letter-spacing: 2px; color: var(--ink); margin-bottom: 14px; }
+ .mock-web .web-blocks { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+ .mock-web .web-block { height: 44px; border-radius: 8px; border: 1.5px solid var(--ink); }
+ .mock-web .web-block:nth-child(1) { background: rgba(232,168,124,0.45); }
+ .mock-web .web-block:nth-child(2) { background: rgba(216,167,177,0.50); }
+ .mock-web .web-block:nth-child(3) { background: rgba(156,175,159,0.45); }
+ .feature-body { padding: 32px 36px 36px; }
+ .feature-tag { display: inline-block; padding: 5px 14px; background: var(--bg-paper); border-radius: 14px; font-size: 12px; color: var(--ink); margin-bottom: 14px; letter-spacing: 1px; border: 1.5px solid var(--ink); }
+ .feature-card h3 { font-size: 24px; margin-bottom: 12px; letter-spacing: 1px; }
+ .feature-card p { color: var(--muted); margin-bottom: 22px; line-height: 1.85; font-size: 14.5px; }
+ .feature-link { display: inline-flex; align-items: center; gap: 8px; color: var(--card); font-weight: 600; font-size: 14px; text-decoration: none; padding: 13px 26px; border-radius: 28px; background: var(--ink); border: 2px solid var(--ink); transition: all .4s; box-shadow: 4px 4px 0 var(--c-orange); }
+ .feature-card:nth-child(2) .feature-link { box-shadow: 4px 4px 0 var(--c-rose); }
+ .feature-link:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--c-orange); }
+ .feature-card:nth-child(2) .feature-link:hover { box-shadow: 6px 6px 0 var(--c-rose); }
+ .work-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+ .work-card { background: var(--card); border-radius: 20px; padding: 0; transition: all .5s cubic-bezier(.4,0,.2,1); border: 1.5px solid var(--ink); display: flex; flex-direction: column; position: relative; overflow: hidden; text-decoration: none; color: var(--ink); }
+ .work-card.cc1 { box-shadow: 5px 5px 0 var(--c-orange); }
+ .work-card.cc2 { box-shadow: 5px 5px 0 var(--c-rose); }
+ .work-card.cc3 { box-shadow: 5px 5px 0 var(--c-sage); }
+ .work-card.cc4 { box-shadow: 5px 5px 0 var(--c-gold); }
+ .work-card.cc5 { box-shadow: 5px 5px 0 var(--c-purple); }
+ .work-card.cc6 { box-shadow: 5px 5px 0 var(--c-sky); }
+ .work-card::after { content: ""; position: absolute; top: 0; left: -120%; width: 120%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); transition: left .9s; pointer-events: none; z-index: 5; }
+ .work-card:hover::after { left: 120%; }
+ .work-card:hover { transform: translate(-4px,-4px) rotate(-0.8deg); }
+ .work-card.cc1:hover { box-shadow: 9px 9px 0 var(--c-orange); }
+ .work-card.cc2:hover { box-shadow: 9px 9px 0 var(--c-rose); }
+ .work-card.cc3:hover { box-shadow: 9px 9px 0 var(--c-sage); }
+ .work-card.cc4:hover { box-shadow: 9px 9px 0 var(--c-gold); }
+ .work-card.cc5:hover { box-shadow: 9px 9px 0 var(--c-purple); }
+ .work-card.cc6:hover { box-shadow: 9px 9px 0 var(--c-sky); }
+ .work-cover { width: 100%; height: 180px; position: relative; overflow: hidden; border-bottom: 1.5px solid var(--ink); display: flex; flex-direction: column; justify-content: space-between; padding: 16px 18px; }
+ .work-cover .cover-no { font-size: 11px; letter-spacing: 3px; color: var(--ink); opacity: 0.65; font-weight: 700; z-index: 2; }
+ .work-cover .cover-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 90px; height: 90px; transition: transform .6s; z-index: 1; }
+ .work-card:hover .cover-icon { transform: translate(-50%,-50%) scale(1.18) rotate(10deg); }
+ .work-cover .cover-title-zh { font-size: 20px; font-weight: 800; line-height: 1.25; letter-spacing: 1.5px; color: var(--ink); z-index: 2; text-shadow: 1px 1px 0 var(--card); }
+ .work-cover .cover-meta { display: flex; justify-content: space-between; align-items: flex-end; font-size: 10px; color: var(--ink); opacity: 0.6; z-index: 2; }
+ .work-cover.t1 { background: linear-gradient(135deg, #FFEBD6, #FFD0B0); }
+ .work-cover.t2 { background: linear-gradient(135deg, #FFE0E5, #F5C8D0); }
+ .work-cover.t3 { background: linear-gradient(135deg, #DCEDDC, #BDD8BE); }
+ .work-cover.t4 { background: linear-gradient(135deg, #FFF2D8, #F5E0BB); }
+ .work-cover.t5 { background: linear-gradient(135deg, #ECDFF0, #D5C0DD); }
+ .work-cover.t6 { background: linear-gradient(135deg, #DDE8F0, #C2D5E0); }
+ .work-body { padding: 22px 24px 24px; flex: 1; display: flex; flex-direction: column; }
+ .work-card .cat { display: inline-block; padding: 4px 12px; border-radius: 10px; font-size: 11px; margin-bottom: 10px; width: fit-content; letter-spacing: 1px; border: 1.5px solid var(--ink); background: var(--card); color: var(--ink); }
+ .work-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
+ .work-tag { font-size: 10.5px; padding: 3px 9px; border-radius: 8px; background: rgba(232,168,124,0.18); color: var(--c-orange-d); font-weight: 700; }
+ .work-tag.t-r { background: rgba(216,167,177,0.22); color: var(--c-rose-d); }
+ .work-tag.t-g { background: rgba(156,175,159,0.22); color: var(--c-sage-d); }
+ .work-tag.t-p { background: rgba(180,160,200,0.22); color: var(--c-purple-d); }
+ .work-tag.t-y { background: rgba(217,178,107,0.25); color: var(--c-gold-d); }
+ .work-tag.t-b { background: rgba(168,197,214,0.25); color: var(--c-sky-d); }
+ .work-card h4 { font-size: 15.5px; margin-bottom: 10px; line-height: 1.5; letter-spacing: 1px; color: var(--ink); }
+ .work-card .desc { font-size: 13px; color: var(--muted); margin-bottom: 16px; flex: 1; line-height: 1.8; }
+ .work-card .open-btn { color: var(--ink); font-size: 12.5px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; transition: gap .3s; border-bottom: 1.5px solid var(--ink); width: fit-content; padding-bottom: 2px; align-self: flex-start; }
+ .work-card:hover .open-btn { gap: 12px; }
+ .contact { background: var(--card); border-radius: 32px; padding: 80px 40px; text-align: center; max-width: 1200px; margin: 0 auto; position: relative; overflow: hidden; border: 2px solid var(--ink); box-shadow: 10px 10px 0 var(--c-orange); }
+ .contact h2 { font-size: 38px; margin-bottom: 16px; letter-spacing: 2px; }
+ .contact > p { color: var(--muted); margin-bottom: 28px; }
+ .ai-quote { max-width: 720px; margin: 0 auto 40px; padding: 28px 36px; background: var(--bg-paper); border: 1.5px dashed var(--ink); border-radius: 20px; font-size: 15px; line-height: 2; color: var(--ink-soft); font-style: italic; position: relative; text-align: left; }
+ .ai-quote::before { content: "❝"; position: absolute; top: 8px; left: 18px; font-size: 32px; color: var(--c-orange-d); opacity: 0.5; font-style: normal; }
+ .ai-quote::after { content: "❞"; position: absolute; bottom: -8px; right: 22px; font-size: 32px; color: var(--c-orange-d); opacity: 0.5; font-style: normal; }
+ .ai-quote strong { color: var(--ink); font-style: normal; }
+ .contact-list { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+ .contact-item { background: var(--card); padding: 18px 32px; border-radius: 16px; font-size: 15px; border: 1.5px solid var(--ink); transition: all .4s; display: inline-flex; align-items: center; gap: 12px; box-shadow: 3px 3px 0 var(--c-rose); }
+ .contact-item:nth-child(2) { box-shadow: 3px 3px 0 var(--c-sage); }
+ .contact-item:hover { transform: translate(-2px,-2px) rotate(-2deg); box-shadow: 6px 6px 0 var(--c-rose); }
+ .contact-item:nth-child(2):hover { box-shadow: 6px 6px 0 var(--c-sage); }
+ .contact-item svg { width: 22px; height: 22px; }
+ footer { text-align: center; padding: 32px; color: var(--muted); font-size: 13px; border-top: 1.5px solid var(--ink); letter-spacing: 1px; background: var(--bg); }
+ @keyframes fadeIn { to { opacity: 1; } }
+ @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+ @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
+ .reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(.4,0,.2,1); }
+ .reveal.show { opacity: 1; transform: translateY(0); }
+ .reveal-stagger > * { opacity: 0; transform: translateY(30px); transition: all .8s cubic-bezier(.4,0,.2,1); }
+ .reveal-stagger.show > * { opacity: 1; transform: translateY(0); }
+ .reveal-stagger.show > *:nth-child(1) { transition-delay: .05s; }
+ .reveal-stagger.show > *:nth-child(2) { transition-delay: .12s; }
+ .reveal-stagger.show > *:nth-child(3) { transition-delay: .19s; }
+ .reveal-stagger.show > *:nth-child(4) { transition-delay: .26s; }
+ .reveal-stagger.show > *:nth-child(5) { transition-delay: .33s; }
+ .reveal-stagger.show > *:nth-child(6) { transition-delay: .40s; }
+ @media (max-width: 1024px) {
+  .stats-top { grid-template-columns: 1fr; }
+  .stats-bottom { grid-template-columns: repeat(2, 1fr); }
+  .work-grid { grid-template-columns: repeat(2, 1fr); }
+  .why-grid { grid-template-columns: 1fr; }
+  .core-strengths { grid-template-columns: repeat(2, 1fr); }
+ }
+ @media (max-width: 768px) {
+  nav { padding: 14px 20px; }
+  nav ul { display: none; }
+  section { padding: 70px 20px; }
+  .about-grid { grid-template-columns: 1fr; gap: 24px; }
+  .featured { grid-template-columns: 1fr; }
+  .work-grid { grid-template-columns: 1fr; }
+  .core-strengths { grid-template-columns: 1fr; }
+  .contact { margin: 0 20px 40px; padding: 50px 24px; }
+  .doodle, .cursor-glow { display: none; }
+ }
+</style>
+</head>
+<body>
+<div class="cursor-glow" id="cursorGlow"></div>
+<nav id="nav">
+ <div class="logo">
+  <svg viewBox="0 0 26 26"><path class="hand" d="M13 3 L15 10 L22 10.5 L17 15 L18.5 22 L13 18.5 L7.5 22 L9 15 L4 10.5 L11 10 Z" stroke="#C97A4A"/></svg>
+  Xu Haoxuan
+ </div>
+ <ul>
+  <li><a href="#why">优势</a></li>
+  <li><a href="#about">关于</a></li>
+  <li><a href="#data">数据</a></li>
+  <li><a href="#featured">精选</a></li>
+  <li><a href="#works">作品</a></li>
+  <li><a href="#contact">聊聊</a></li>
+ </ul>
+</nav>
+
+<section class="hero">
+ <svg class="doodle bob" style="top:14%;left:8%;" width="55" height="55" viewBox="0 0 55 55"><path class="hand" d="M27 5 L31 22 L48 24 L35 34 L40 50 L27 41 L14 50 L19 34 L6 24 L23 22 Z" stroke="#C97A4A"/></svg>
+ <svg class="doodle wiggle" style="top:18%;right:10%;" width="60" height="60" viewBox="0 0 60 60"><path class="hand" d="M30 12 C22 12 15 18 15 28 C15 38 30 50 30 50 C30 50 45 38 45 28 C45 18 38 12 30 12 Z" stroke="#A86577"/></svg>
+ <svg class="doodle bob-slow" style="bottom:22%;left:12%;" width="55" height="50" viewBox="0 0 55 50"><path class="hand" d="M8 8 Q8 4 12 4 L43 4 Q47 4 47 8 L47 30 Q47 34 43 34 L22 34 L14 42 L16 34 L12 34 Q8 34 8 30 Z" stroke="#5C7560"/><text x="27" y="22" text-anchor="middle" font-size="11" fill="#5C7560" letter-spacing="2">Hi!</text></svg>
+ <svg class="doodle twinkle" style="top:30%;right:20%;" width="14" height="14" viewBox="0 0 14 14"><path d="M7 1 L8.5 5.5 L13 7 L8.5 8.5 L7 13 L5.5 8.5 L1 7 L5.5 5.5 Z" fill="#C97A4A"/></svg>
+ <svg class="doodle twinkle" style="top:62%;right:22%;animation-delay:0.7s;" width="10" height="10" viewBox="0 0 14 14"><path d="M7 1 L8.5 5.5 L13 7 L8.5 8.5 L7 13 L5.5 8.5 L1 7 L5.5 5.5 Z" fill="#A86577"/></svg>
+ <svg class="doodle twinkle" style="top:25%;left:30%;animation-delay:1.2s;" width="12" height="12" viewBox="0 0 14 14"><path d="M7 1 L8.5 5.5 L13 7 L8.5 8.5 L7 13 L5.5 8.5 L1 7 L5.5 5.5 Z" fill="#5C7560"/></svg>
+ <div class="hero-content">
+  <span class="greet"><svg width="14" height="14" viewBox="0 0 14 14"><path class="hand" d="M7 1 L8.5 5.5 L13 7 L8.5 8.5 L7 13 L5.5 8.5 L1 7 L5.5 5.5 Z" stroke-width="1.5" stroke="#C97A4A"/></svg> Hi, I'm Haoxuan</span>
+  <div class="position-tag">AI<span>×</span>Communication<span>×</span>Coding</div>
+  <h1>
+   <span class="line show">在<span class="underline-doodle uc1">人和 AI<svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M2 8 Q25 2 50 7 T98 6" stroke="#E8A87C" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></span>之间，</span>
+   <span class="line show">做一个<span class="underline-doodle uc2">翻译者<svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M2 6 Q25 10 50 5 T98 7" stroke="#D8A7B1" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></span>和<span class="underline-doodle uc3">建造者<svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M2 8 Q25 2 50 7 T98 6" stroke="#9CAF9F" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></span>。</span>
+  </h1>
+  <div class="typewriter"><span id="type-text"></span><span class="cursor"></span></div>
+  <div class="core-strengths">
+   <div class="core-strength"><span class="cs-emoji">🤖</span><div class="cs-title">AI Native</div><div class="cs-sub">默认与模型协同</div></div>
+   <div class="core-strength"><span class="cs-emoji">🧠</span><div class="cs-title">懂用户</div><div class="cs-sub">学术级研究方法</div></div>
+   <div class="core-strength"><span class="cs-emoji">📣</span><div class="cs-title">懂传播</div><div class="cs-sub">千万+ 浏览实战</div></div>
+   <div class="core-strength"><span class="cs-emoji">🚀</span><div class="cs-title">能落地</div><div class="cs-sub">0→1 全链路独立交付</div></div>
+  </div>
+ </div>
+ <div class="scroll-hint">SCROLL</div>
+</section>
+
+<section id="why" class="why-section reveal">
+ <div class="container">
+  <svg class="doodle float-l" style="top:60px;left:4%;" width="48" height="48" viewBox="0 0 48 48"><path class="hand" d="M24 6 L28 18 L40 20 L31 28 L34 40 L24 33 L14 40 L17 28 L8 20 L20 18 Z" stroke="#C97A4A"/></svg>
+  <svg class="doodle float-r" style="top:80px;right:4%;" width="42" height="42" viewBox="0 0 42 42"><circle class="hand" cx="21" cy="21" r="14" stroke="#5C7560" stroke-dasharray="3 3"/><circle class="hand" cx="21" cy="21" r="6" stroke="#5C7560"/></svg>
+  <div class="section-eyebrow">WHY ME</div>
+  <h2 class="section-heading">三 条 长 在 一 起 的 主 线</h2>
+  <p class="section-sub">在传播与 AI 的交汇处，我同时具备<strong>"做研究的深度 · 做内容的厚度 · 做产品的速度"</strong>—— 这是 AI Native 时代最稀缺的复合型能力。</p>
+  <div class="why-grid reveal-stagger">
+   <div class="why-card"><div class="why-head"><div class="why-num-big">01</div><div class="why-icon-big">🔬</div></div><h3>懂研究 · 懂用户</h3><div class="why-punchline">用学术级方法论，做产品级用户洞察</div><ul class="why-points"><li>掌握 <strong>扎根理论 · UTAUT 模型</strong> 等质化与量化研究方法</li><li>熟练运用 <strong>SPSS / AMOS</strong> 完成结构方程建模与数据分析</li><li>能独立完成 <strong>用户研究 / 市场研究 / 人机关系研究</strong> 全流程</li></ul><div class="why-badge"><div class="why-badge-num">2 篇</div><div class="why-badge-label">论文获 IAMCR · AEJMC<br>国际顶会收录</div></div></div>
+   <div class="why-card"><div class="why-head"><div class="why-num-big">02</div><div class="why-icon-big">🛠️</div></div><h3>懂产品 · 能落地</h3><div class="why-punchline">不只会想，更能从 0 到 1 把它做出来</div><ul class="why-points"><li>在小红书重构 <strong>40+ 模块的 Agent 工作区</strong>，标准化目录与索引</li><li>独立用 <strong>Vibe Coding</strong> 完成 AI 互动游戏与个人网站全链路开发</li><li>从<strong>策划 · 设计 · 开发 · 数据复盘</strong>每一环都能交付</li></ul><div class="why-badge"><div class="why-badge-num">90%+</div><div class="why-badge-label">小红书 AI 项目 NPS<br>覆盖 853 人次</div></div></div>
+   <div class="why-card"><div class="why-head"><div class="why-num-big">03</div><div class="why-icon-big">🤖</div></div><h3>懂 AI · 会协同</h3><div class="why-punchline">不是"会用 AI"，而是默认与 AI 协同</div><ul class="why-points"><li>遇到问题第一反应是 <strong>"和模型一起拆解"</strong>，而非"AI 能帮我什么"</li><li>把 <strong>人文叙事 × 算法逻辑</strong> 在一个项目里无缝拼接</li><li>技术栈：<strong>Agent · Prompt · HTML · SQL · Shell</strong></li></ul><div class="why-badge"><div class="why-badge-num">1000<small style="font-size:14px;">万+</small></div><div class="why-badge-label">报道全网总浏览量<br>人民网 · 中国日报等</div></div></div>
+  </div>
+ </div>
+</section>
+
+<section id="about" class="reveal">
+ <div class="container">
+  <svg class="doodle bob" style="top:80px;right:0;" width="60" height="60" viewBox="0 0 60 60"><path class="hand" d="M10 30 Q30 5 50 30 Q30 55 10 30 Z" stroke="#5C7560"/><circle class="hand" cx="30" cy="30" r="6" stroke="#5C7560"/></svg>
+  <div class="section-eyebrow">ABOUT ME</div>
+  <h2 class="section-heading">关 于 我</h2>
+  <p class="section-sub">一个在传播学里学 AI、在 AI 里做传播的人。</p>
+  <div class="about-grid">
+   <div class="about-text">
+    <svg class="pin" viewBox="0 0 50 60"><circle class="hand" cx="25" cy="20" r="14" fill="#FFFCF5" stroke="#C97A4A"/><circle class="hand" cx="25" cy="20" r="6" stroke="#C97A4A"/><line class="hand" x1="25" y1="34" x2="25" y2="56" stroke-width="2.5" stroke="#C97A4A"/></svg>
+    <svg class="stamp" viewBox="0 0 80 80"><circle class="hand" cx="40" cy="40" r="34" stroke-dasharray="4 3" stroke="#5C7560"/><circle class="hand" cx="40" cy="40" r="28" stroke="#5C7560"/><text x="40" y="38" text-anchor="middle" font-size="9" fill="#5C7560" letter-spacing="2" font-weight="bold">AI</text><text x="40" y="50" text-anchor="middle" font-size="9" fill="#5C7560" letter-spacing="2" font-weight="bold">NATIVE</text></svg>
+    <p>嗨，我是 <span class="keyword">徐皓萱</span> 👋</p>
+    <p>对我而言，<span class="keyword">"AI Native" 不只是一项技能，而是一种默认与 AI 协同的思维方式</span>——遇到任何问题，第一反应是"怎么和模型一起解决"，而不是"AI 能帮我做什么"。</p>
+    <p>我的核心兴趣是 <span class="keyword k3">"人和 AI 究竟怎么相处"</span>。围绕这个问题，我同时是<span class="keyword">研究者</span>和<span class="keyword">实践者</span>：</p>
+    <p>研究侧，我用扎根理论 / UTAUT 模型 / SPSS · AMOS 做<span class="keyword k2">用户研究、市场研究和人机关系研究</span>，两篇论文先后被 IAMCR、AEJMC 国际顶会收录。</p>
+    <p>实践侧，我在<span class="keyword">小红书</span>做 AI 工具运营、重构 Agent 工作区，独立设计开发 AI 互动游戏与个人网站——<span class="keyword k4">把 AI 真正"长进"内容产品里，而不是停留在 ChatBot 里</span>。</p>
+   </div>
+   <div class="skill-block">
+    <div class="skill-card"><div class="skill-head"><div class="skill-icon">🎓</div><h4>学历 & 专业</h4></div><div class="skill-tags"><span class="skill-tag">中国海洋大学 · 新闻学（本科）</span><span class="skill-tag">上海交通大学 · 传播学（保送硕士）</span></div></div>
+    <div class="skill-card"><div class="skill-head"><div class="skill-icon">🛠️</div><h4>AI & 技术工具</h4></div><div class="skill-tags"><span class="skill-tag">OpenClaw Agent</span><span class="skill-tag">Predy</span><span class="skill-tag">VSCode</span><span class="skill-tag">GitHub</span><span class="skill-tag">HTML / CSS / JS</span><span class="skill-tag">SQL</span><span class="skill-tag">Shell</span><span class="skill-tag">SPSS / AMOS</span></div></div>
+    <div class="skill-card"><div class="skill-head"><div class="skill-icon">🌏</div><h4>语言能力</h4></div><div class="skill-tags"><span class="skill-tag">CET-6 · 652 分</span><span class="skill-tag">CET-4 · 632 分</span><span class="skill-tag">普通话二级甲等</span></div></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="data" class="reveal">
+ <div class="container">
+  <div class="section-eyebrow">SOME HIGHLIGHTS</div>
+  <h2 class="section-heading">一 些 小 成 绩</h2>
+  <p class="section-sub">下面这些数字，是我把<strong>能力变成结果</strong>的具体证据。</p>
+  <div class="stats-top reveal-stagger">
+   <div class="stat-hero"><span class="stat-hero-tag">学术 · ACADEMIC</span><div class="stat-hero-num">3.93<small>/4.0</small></div><div class="stat-hero-label">本科 GPA · 综合排名 1/81</div><div class="stat-hero-from">国家奖学金 × 3 · 保送上海交大</div></div>
+   <div class="stat-hero"><span class="stat-hero-tag">影响力 · IMPACT</span><div class="stat-hero-num"><span data-count="1000">0</span><small>万+</small></div><div class="stat-hero-label">报道全网总浏览量</div><div class="stat-hero-from">人民网 / 中国日报 / 中国新闻网等</div></div>
+   <div class="stat-hero"><span class="stat-hero-tag">产品 · PRODUCT</span><div class="stat-hero-num"><span data-count="90">0</span>%<small>+</small></div><div class="stat-hero-label">小红书 AI 项目 NPS</div><div class="stat-hero-from">VibeGame · 覆盖 853 人次</div></div>
+  </div>
+  <div class="stats-bottom reveal-stagger">
+   <div class="stat-mini"><div class="stat-mini-num"><span data-count="30">0</span>+</div><div class="stat-mini-label">国家 / 省级<br>竞赛奖项</div></div>
+   <div class="stat-mini"><div class="stat-mini-num"><span data-count="2">0</span></div><div class="stat-mini-label">国际顶会论文<br>IAMCR · AEJMC</div></div>
+   <div class="stat-mini"><div class="stat-mini-num">30→<span data-count="65">0</span>%</div><div class="stat-mini-label">海尔社群<br>活跃度跃升</div></div>
+   <div class="stat-mini"><div class="stat-mini-num"><span data-count="40">0</span>+</div><div class="stat-mini-label">Agent 工作区<br>技能模块重构</div></div>
+   <div class="stat-mini"><div class="stat-mini-num"><span data-count="75">0</span>%</div><div class="stat-mini-label">海外创客<br>课程使用率</div></div>
+  </div>
+ </div>
+</section>
+
+<section id="featured" class="reveal">
+ <div class="container">
+  <div class="section-eyebrow">FEATURED PROJECTS</div>
+  <h2 class="section-heading">看 看 我 做 的 东 西</h2>
+  <div class="featured reveal-stagger" style="margin-top:50px;">
+   <div class="feature-card">
+    <div class="feature-preview">
+     <div class="browser-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url">xu-125.github.io/ai-predy-game/</span></div>
+     <div class="mock-game">
+      <div class="stars">
+       <svg class="twinkle" style="top:15%;left:12%;" width="20" height="20" viewBox="0 0 20 20"><path class="hand" d="M10 2 L12 8 L18 9 L13 13 L15 19 L10 16 L5 19 L7 13 L2 9 L8 8 Z" stroke="#C97A4A"/></svg>
+       <svg class="twinkle" style="top:20%;right:15%;animation-delay:0.5s;" width="16" height="16" viewBox="0 0 20 20"><path class="hand" d="M10 2 L12 8 L18 9 L13 13 L15 19 L10 16 L5 19 L7 13 L2 9 L8 8 Z" stroke="#A86577"/></svg>
+      </div>
+      <div class="game-title">🎮 AI PREDY</div>
+      <div class="game-character"><svg width="60" height="60" viewBox="0 0 50 50"><circle class="hand" cx="25" cy="25" r="18"/><circle cx="18" cy="22" r="2.5" fill="#2C2416"/><circle cx="32" cy="22" r="2.5" fill="#2C2416"/><path class="hand" d="M18 32 Q25 38 32 32"/></svg></div>
+      <div class="game-btn">START ▶</div>
+     </div>
+    </div>
+    <div class="feature-body">
+     <span class="feature-tag">🎮 AI · 互动游戏</span>
+     <h3>AI Predy 互动游戏</h3>
+     <p>用 Vibe Coding 把 AI 能力做成一个能"玩"的小游戏——这是我对"AI 不只是工具，而是一种新的体验形态"的具体回答。从产品玩法、视觉到代码，全部独立完成。</p>
+     <a href="https://xu-125.github.io/ai-predy-game/" target="_blank" rel="noopener" class="feature-link">🚀 立 即 体 验 →</a>
+    </div>
+   </div>
+   <div class="feature-card">
+    <div class="feature-preview">
+     <div class="browser-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url">xu-125.github.io/xhxportfolio/</span></div>
+     <div class="mock-web">
+      <div class="web-nav"><div class="web-logo">XHX ✦</div><div class="web-menu"><span></span><span></span><span></span></div></div>
+      <div class="web-hero"><div class="web-tag">✦ PORTFOLIO</div><div class="web-title">网页设计</div><div class="web-blocks"><div class="web-block"></div><div class="web-block"></div><div class="web-block"></div></div></div>
+     </div>
+    </div>
+    <div class="feature-body">
+     <span class="feature-tag">💻 网页设计</span>
+     <h3>个人作品集网站</h3>
+     <p>从 0 到 1 与 AI 协同设计开发的个人展示网页（建议电脑端访问）。它既是我的作品，也是我把"内容审美 + 工程能力"两条线长在一起的体现。</p>
+     <a href="https://xu-125.github.io/xhxportfolio/" target="_blank" rel="noopener" class="feature-link">🚀 访 问 网 站 →</a>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="works" class="reveal">
+ <div class="container">
+  <div class="section-eyebrow">PORTFOLIO</div>
+  <h2 class="section-heading">内 容 作 品 集</h2>
+  <p class="section-sub">点击任意卡片即可跳转原文 ✨ 这些作品共同串起一条主线——<br><strong>以 AI Native 思维做内容</strong>：从洞察用户、打磨叙事，到精准分发与可视化落地。</p>
+  <div class="work-grid reveal-stagger">
+   <a href="https://kdocs.cn/l/cc2rvjvGtSb6" target="_blank" rel="noopener" class="work-card cc1">
+    <div class="work-cover t1"><div class="cover-no">No. 01 / DEEP REPORT</div><svg class="cover-icon" viewBox="0 0 100 100"><rect class="hand" x="18" y="14" width="64" height="74" rx="3" stroke="#C97A4A" stroke-width="2"/><line class="hand" x1="28" y1="32" x2="72" y2="32" stroke="#C97A4A" stroke-width="2"/><line class="hand" x1="28" y1="42" x2="72" y2="42" stroke="#C97A4A" stroke-width="2"/><line class="hand" x1="28" y1="52" x2="60" y2="52" stroke="#C97A4A" stroke-width="2"/><circle class="hand" cx="65" cy="68" r="9" stroke="#C97A4A" stroke-width="2"/><line class="hand" x1="71" y1="74" x2="78" y2="81" stroke="#C97A4A" stroke-width="2"/></svg><div class="cover-title-zh">看不见的<br>八千万</div><div class="cover-meta"><span>报道</span><span>—— 调查</span></div></div>
+    <div class="work-body"><span class="cat">深度报道</span><div class="work-tags"><span class="work-tag">#懂用户</span><span class="work-tag t-r">#数据叙事</span></div><h4>《看不见的八千万》</h4><p class="desc">用结构化叙事让冰冷数据"开口说话"——从用户洞察出发，把宏大社会议题拆解成普通人能共情的故事。</p><span class="open-btn">阅 读 全 文 ↗</span></div>
+   </a>
+   <a href="http://finance.people.com.cn/n1/2024/0730/c1004-40288626.html" target="_blank" rel="noopener" class="work-card cc2">
+    <div class="work-cover t2"><div class="cover-no">No. 02 / NEWS</div><svg class="cover-icon" viewBox="0 0 100 100"><rect class="hand" x="16" y="24" width="68" height="56" rx="2" stroke="#A86577" stroke-width="2"/><rect class="hand" x="22" y="30" width="26" height="20" stroke="#A86577" stroke-width="2"/><line class="hand" x1="54" y1="32" x2="78" y2="32" stroke="#A86577" stroke-width="2"/><line class="hand" x1="54" y1="40" x2="78" y2="40" stroke="#A86577" stroke-width="2"/><line class="hand" x1="22" y1="58" x2="78" y2="58" stroke="#A86577" stroke-width="2"/><line class="hand" x1="22" y1="66" x2="78" y2="66" stroke="#A86577" stroke-width="2"/></svg><div class="cover-title-zh">人民网<br>财经刊发</div><div class="cover-meta"><span>PEOPLE.CN</span><span>—— 央媒</span></div></div>
+    <div class="work-body"><span class="cat">新闻稿</span><div class="work-tags"><span class="work-tag t-r">#懂传播</span><span class="work-tag">#渠道精准</span></div><h4>人民网 · 财经频道刊发</h4><p class="desc">把内容做对、把渠道选对——作品被人民网财经频道收录，验证了"内容契合度 + 渠道判断力"的双重能力。</p><span class="open-btn">查 看 原 文 ↗</span></div>
+   </a>
+   <a href="https://www.chinanews.com/sh/2024/07-25/10257006.shtml" target="_blank" rel="noopener" class="work-card cc3">
+    <div class="work-cover t3"><div class="cover-no">No. 03 / NEWS</div><svg class="cover-icon" viewBox="0 0 100 100"><circle class="hand" cx="50" cy="50" r="32" stroke="#5C7560" stroke-width="2"/><line class="hand" x1="18" y1="50" x2="82" y2="50" stroke="#5C7560" stroke-width="2"/><path class="hand" d="M50 18 Q34 50 50 82 Q66 50 50 18" stroke="#5C7560" stroke-width="2"/></svg><div class="cover-title-zh">中国新闻网<br>报道</div><div class="cover-meta"><span>CHINANEWS</span><span>—— 国际</span></div></div>
+    <div class="work-body"><span class="cat">新闻稿</span><div class="work-tags"><span class="work-tag t-g">#懂用户</span><span class="work-tag">#跨文化叙事</span></div><h4>中国新闻网报道</h4><p class="desc">面向全球华人华侨用户做内容——从受众语境出发设计选题与措辞，让中国故事在海外也能被听懂、被转发。</p><span class="open-btn">查 看 原 文 ↗</span></div>
+   </a>
+   <a href="https://m.toutiao.com/article/7255518777335595555" target="_blank" rel="noopener" class="work-card cc4">
+    <div class="work-cover t4"><div class="cover-no">No. 04 / NEWS</div><svg class="cover-icon" viewBox="0 0 100 100"><rect class="hand" x="18" y="18" width="64" height="64" rx="10" stroke="#8A6A30" stroke-width="2"/><text x="50" y="58" text-anchor="middle" font-size="22" font-weight="bold" fill="#8A6A30">头条</text></svg><div class="cover-title-zh">今日头条<br>专题刊发</div><div class="cover-meta"><span>TOUTIAO</span><span>—— 算法分发</span></div></div>
+    <div class="work-body"><span class="cat">新闻稿</span><div class="work-tags"><span class="work-tag t-y">#懂产品</span><span class="work-tag">#算法友好</span></div><h4>今日头条专题</h4><p class="desc">理解算法分发逻辑，让内容"被推荐"而不只是"被发出"——在头部内容平台获得专题级曝光。</p><span class="open-btn">查 看 原 文 ↗</span></div>
+   </a>
+   <a href="http://finance.people.com.cn/n1/2024/0805/c1004-40292669.html" target="_blank" rel="noopener" class="work-card cc5">
+    <div class="work-cover t5"><div class="cover-no">No. 05 / INFOGRAPHIC</div><svg class="cover-icon" viewBox="0 0 100 100"><rect class="hand" x="20" y="20" width="26" height="26" rx="2" stroke="#6E5A8A" stroke-width="2"/><rect class="hand" x="54" y="20" width="26" height="26" rx="2" stroke="#6E5A8A" stroke-width="2"/><rect class="hand" x="20" y="54" width="26" height="26" rx="2" stroke="#6E5A8A" stroke-width="2"/><rect class="hand" x="54" y="54" width="26" height="26" rx="2" stroke="#6E5A8A" stroke-width="2"/><circle cx="33" cy="33" r="3" fill="#6E5A8A"/><circle cx="67" cy="67" r="3" fill="#6E5A8A"/></svg><div class="cover-title-zh">暴雨预警<br>避险图解</div><div class="cover-meta"><span>INFOGRAPHIC</span><span>—— 科普</span></div></div>
+    <div class="work-body"><span class="cat">信息图设计</span><div class="work-tags"><span class="work-tag t-p">#能落地</span><span class="work-tag">#可视化产品</span></div><h4>暴雨预警避险知识图解</h4><p class="desc">把权威信息变成可视化产品——为人民网设计 9 条防汛避险图解，兼顾信息密度与传播友好度。</p><span class="open-btn">查 看 作 品 ↗</span></div>
+   </a>
+   <a href="https://www.bilibili.com/video/BV1MP411c78W/" target="_blank" rel="noopener" class="work-card cc6">
+    <div class="work-cover t6"><div class="cover-no">No. 06 / VIDEO</div><svg class="cover-icon" viewBox="0 0 100 100"><circle class="hand" cx="50" cy="50" r="30" stroke="#5A7A8C" stroke-width="2"/><path class="hand" d="M42 36 L42 64 L66 50 Z" stroke="#5A7A8C" stroke-width="2"/></svg><div class="cover-title-zh">深度报道<br>视频版</div><div class="cover-meta"><span>BILIBILI</span><span>—— 跨媒介</span></div></div>
+    <div class="work-body"><span class="cat">视频作品</span><div class="work-tags"><span class="work-tag t-b">#能创新</span><span class="work-tag">#跨媒介叙事</span></div><h4>深度报道（视频形式）</h4><p class="desc">把同一个故事在不同媒介里重新设计——从文字到视频的跨媒介改编，让信息密度与情感张力同时在线。</p><span class="open-btn">观 看 视 频 ↗</span></div>
+   </a>
+  </div>
+ </div>
+</section>
+
+<section id="contact">
+ <div class="contact reveal">
+  <svg class="doodle bob" style="top:30px;left:40px;" width="40" height="40" viewBox="0 0 40 40"><path class="hand" d="M20 6 L23 16 L33 18 L25 24 L28 34 L20 28 L12 34 L15 24 L7 18 L17 16 Z" stroke="#C97A4A"/></svg>
+  <svg class="doodle wiggle" style="top:30px;right:40px;" width="40" height="40" viewBox="0 0 40 40"><path class="hand" d="M20 6 C13 6 8 11 8 18 C8 25 20 35 20 35 C20 35 32 25 32 18 C32 11 27 6 20 6 Z" stroke="#A86577"/></svg>
+  <h2>来 一 起 聊 聊 吧 ☕</h2>
+  <p>欢迎合作 · 学术交流 · 一切有趣的可能</p>
+  <div class="ai-quote">在我看来，<strong>AI Native 不是熟练使用某个工具，而是一种"和 AI 一起思考"的本能</strong>——是当一个想法冒出来的瞬间，就能本能地拆解它、和模型协同、把它变成可以被传播的体验。它让人不再是内容的搬运工，而是<strong>体验的设计师</strong>。</div>
+  <div class="contact-list">
+   <div class="contact-item"><svg viewBox="0 0 22 22"><rect class="hand" x="2" y="5" width="18" height="13" rx="2" stroke="#A86577"/><path class="hand" d="M2 7 L11 13 L20 7" stroke="#A86577"/></svg>xuhaoxuan01@126.com</div>
+   <div class="contact-item"><svg viewBox="0 0 22 22"><path class="hand" d="M5 3 L9 3 L11 8 L8 10 C9 13 11 15 14 16 L16 13 L21 15 L21 19 C21 20 20 21 19 21 C10 21 1 12 1 3 C1 2 2 1 3 1 L5 1" stroke="#5C7560"/></svg>150 - 0299 - 0476</div>
+  </div>
+ </div>
+</section>
+
+<footer>© 2026 Xu Haoxuan · Designed &amp; Built with 🤍 by Vibe Coding</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+ if (window.scrollY > 50) nav.classList.add('scrolled');
+ else nav.classList.remove('scrolled');
+});
+const cursorGlow = document.getElementById('cursorGlow');
+let mouseX = 0, mouseY = 0, glowX = 0, glowY = 0;
+document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; cursorGlow.style.opacity = '1'; });
+document.addEventListener('mouseleave', () => { cursorGlow.style.opacity = '0'; });
+function animateGlow() {
+ glowX += (mouseX - glowX) * 0.1; glowY += (mouseY - glowY) * 0.1;
+ cursorGlow.style.transform = `translate(${glowX}px, ${glowY}px) translate(-50%, -50%)`;
+ requestAnimationFrame(animateGlow);
+}
+animateGlow();
+const phrases = ["AI Native 是一种本能","懂传播 · 懂用户 · 懂产品 · 能落地","和模型一起思考，和算法一起表达","让传播在 AI 时代被重新定义"];
+let phraseIndex = 0, charIndex = 0, isDeleting = false;
+const typeEl = document.getElementById('type-text');
+function type() {
+ const current = phrases[phraseIndex];
+ if (isDeleting) {
+  typeEl.textContent = current.substring(0, charIndex--);
+  if (charIndex < 0) { isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; }
+  setTimeout(type, 40);
+ } else {
+  typeEl.textContent = current.substring(0, charIndex++);
+  if (charIndex > current.length) { isDeleting = true; setTimeout(type, 1800); return; }
+  setTimeout(type, 90);
+ }
+}
+setTimeout(type, 1500);
+const revealObserver = new IntersectionObserver(entries => {
+ entries.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('show'); if (e.target.id === 'data') startCount(); }
+ });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+document.querySelectorAll('.reveal-stagger').forEach(el => revealObserver.observe(el));
+let counted = false;
+function startCount() {
+ if (counted) return; counted = true;
+ document.querySelectorAll('[data-count]').forEach(el => {
+  const target = +el.dataset.count; let cur = 0;
+  const step = Math.max(1, Math.floor(target / 60));
+  const timer = setInterval(() => { cur += step; if (cur >= target) { cur = target; clearInterval(timer); } el.textContent = cur; }, 25);
+ });
+}
+document.querySelectorAll('.why-card, .work-card, .stat-mini, .stat-hero, .core-strength').forEach(card => {
+ card.addEventListener('mousemove', (e) => {
+  const rect = card.getBoundingClientRect();
+  const rx = ((e.clientY - rect.top - rect.height/2) / (rect.height/2)) * -3;
+  const ry = ((e.clientX - rect.left - rect.width/2) / (rect.width/2)) * 3;
+  card.style.transform = `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+ });
+ card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+});
+</script>
+</body>
+</html>
