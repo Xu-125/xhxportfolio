@@ -123,6 +123,12 @@ section{padding:100px 64px;position:relative;}
 @keyframes maFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
 
 
+
+/* ── Section dividers ── */
+.sd{height:6px;display:flex;}
+.sd span{flex:1;}
+.sd1 span{background:repeating-linear-gradient(to right,var(--blue) 0 30%,var(--line) 30% 32%,var(--red) 32% 60%,var(--line) 60% 62%,var(--yellow) 62% 85%,var(--line) 85% 87%,var(--green) 87%);}
+
 /* WHY - asymmetric layout with line grid */
 .why-bg{background:var(--bg-warm);position:relative;overflow:hidden;}
 /* colored thin stripe - more playful, not uniform */
@@ -211,11 +217,13 @@ section{padding:100px 64px;position:relative;}
 
 /* WORKS — flip cards 2x2 grid */
 .wk-bg{background:var(--bg-warm);}
-/* ── 3D BRAND SHOWCASE CAROUSEL ── */
-.wk-carousel{position:relative;height:340px;display:flex;align-items:center;justify-content:center;perspective:1600px;margin-top:20px;overflow:visible;}
-.wk-track{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.25,.46,.45,.94);}
-.wk-item{position:absolute;width:320px;height:280px;left:50%;top:50%;margin-left:-160px;margin-top:-140px;background:var(--card);border:1px solid var(--line);padding:32px 28px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;backface-visibility:hidden;transition:opacity .8s,box-shadow .5s;box-shadow:0 8px 24px rgba(0,0,0,.06);}
-.wk-item.active{box-shadow:0 24px 64px rgba(0,0,0,.12);z-index:10;}
+/* ── DEEP 3D SHOWCASE CAROUSEL ── */
+.wk-carousel{position:relative;height:360px;display:flex;align-items:center;justify-content:center;perspective:2000px;margin-top:24px;overflow:visible;}
+.wk-carousel::before{content:"";position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);width:60%;height:60px;background:radial-gradient(ellipse,rgba(0,0,0,.12),transparent 70%);filter:blur(8px);pointer-events:none;}
+.wk-track{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.25,.46,.45,.94);}
+.wk-item{position:absolute;width:340px;height:300px;left:50%;top:50%;margin-left:-170px;margin-top:-150px;background:var(--card);border:1px solid var(--line);padding:34px 30px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;backface-visibility:hidden;transition:opacity .9s,box-shadow .6s,filter .6s;box-shadow:0 4px 16px rgba(0,0,0,.04);}
+.wk-item.active{box-shadow:0 32px 80px rgba(0,0,0,.14),0 0 0 1px rgba(0,0,0,.04);filter:brightness(1.02);z-index:10;}
+.wk-item.dim{opacity:.45;filter:brightness(.92);}
 .wk-item-num{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:3px;margin-bottom:10px;}
 .wk-item-cat{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-bottom:7px;}
 .wk-item:nth-child(1) .wk-item-cat{color:var(--blue);}
@@ -378,6 +386,29 @@ footer{background:var(--ink);color:rgba(255,255,255,.3);padding:20px 64px;displa
     <div class="ma-gap ma-g3"></div>
   </div>
 </section>
+<div class="sd sd1"><span></span></div>
+
+<section id="about" class="reveal">
+  <div class="container">
+    <div class="s-label">ABOUT ME</div>
+    <h2 class="s-h">关于我</h2>
+    <div class="about-grid">
+      <div class="ab-txt">
+        <p>嗨，我是 <span class="kw hl-b">徐皓萱</span> 👋</p>
+        <p>对我而言，<span class="kw hl-b">「AI Native」不只是一项技能，而是一种默认与 AI 协同的思维方式</span>——遇到任何问题，第一反应是「怎么和模型一起解决」，而不是「AI 能帮我做什么」。</p>
+        <p>我的核心兴趣是 <span class="kw hl-b">「人和 AI 究竟怎么相处」</span>。围绕这个问题，我同时是<span class="kw">研究者</span>和<span class="kw">实践者</span>：</p>
+        <p>研究侧，用扎根理论 / UTAUT 模型 / SPSS · AMOS 做<span class="kw hl-g">用户研究、市场研究和人机关系研究</span>，两篇聚焦<strong>人机传播与人机关系</strong>的论文先后被 IAMCR、AEJMC 国际顶会收录。</p>
+        <p>实践侧，在<span class="kw">小红书</span>做 AI 工具运营、重构 Agent 工作区，独立设计开发 AI 互动游戏与个人网站——<span class="kw hl-g">把 AI 真正「长进」内容产品里</span>。</p>
+      </div>
+      <div class="sk-block">
+        <div class="sk-c"><div class="sk-bar"></div><div class="sk-head"><span class="sk-ico">🎓</span><h4>学历 & 专业</h4></div><div class="sk-tags"><span class="sk-tag">中国海洋大学 · 新闻学（本科）</span><span class="sk-tag">上海交通大学 · 传播学（保送硕士）</span></div></div>
+        <div class="sk-c"><div class="sk-bar"></div><div class="sk-head"><span class="sk-ico">🛠️</span><h4>AI & 技术工具</h4></div><div class="sk-tags"><span class="sk-tag">OpenClaw Agent</span><span class="sk-tag">Predy</span><span class="sk-tag">VSCode</span><span class="sk-tag">GitHub</span><span class="sk-tag">HTML/CSS/JS</span><span class="sk-tag">SQL</span><span class="sk-tag">Shell</span><span class="sk-tag">SPSS/AMOS</span></div></div>
+        <div class="sk-c"><div class="sk-bar"></div><div class="sk-head"><span class="sk-ico">🌏</span><h4>语言能力</h4></div><div class="sk-tags"><span class="sk-tag">CET-6 · 652 分</span><span class="sk-tag">CET-4 · 632 分</span><span class="sk-tag">普通话二级甲等</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="sd sd1"><span></span></div>
 
 <section id="why" class="why-bg reveal">
   <div class="why-tape"></div>
@@ -410,27 +441,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.3);padding:20px 64px;displa
     </div>
   </div>
 </section>
-
-<section id="about" class="reveal">
-  <div class="container">
-    <div class="s-label">ABOUT ME</div>
-    <h2 class="s-h">关于我</h2>
-    <div class="about-grid">
-      <div class="ab-txt">
-        <p>嗨，我是 <span class="kw hl-b">徐皓萱</span> 👋</p>
-        <p>对我而言，<span class="kw hl-b">「AI Native」不只是一项技能，而是一种默认与 AI 协同的思维方式</span>——遇到任何问题，第一反应是「怎么和模型一起解决」，而不是「AI 能帮我做什么」。</p>
-        <p>我的核心兴趣是 <span class="kw hl-b">「人和 AI 究竟怎么相处」</span>。围绕这个问题，我同时是<span class="kw">研究者</span>和<span class="kw">实践者</span>：</p>
-        <p>研究侧，用扎根理论 / UTAUT 模型 / SPSS · AMOS 做<span class="kw hl-g">用户研究、市场研究和人机关系研究</span>，两篇聚焦<strong>人机传播与人机关系</strong>的论文先后被 IAMCR、AEJMC 国际顶会收录。</p>
-        <p>实践侧，在<span class="kw">小红书</span>做 AI 工具运营、重构 Agent 工作区，独立设计开发 AI 互动游戏与个人网站——<span class="kw hl-g">把 AI 真正「长进」内容产品里</span>。</p>
-      </div>
-      <div class="sk-block">
-        <div class="sk-c"><div class="sk-bar"></div><div class="sk-head"><span class="sk-ico">🎓</span><h4>学历 & 专业</h4></div><div class="sk-tags"><span class="sk-tag">中国海洋大学 · 新闻学（本科）</span><span class="sk-tag">上海交通大学 · 传播学（保送硕士）</span></div></div>
-        <div class="sk-c"><div class="sk-bar"></div><div class="sk-head"><span class="sk-ico">🛠️</span><h4>AI & 技术工具</h4></div><div class="sk-tags"><span class="sk-tag">OpenClaw Agent</span><span class="sk-tag">Predy</span><span class="sk-tag">VSCode</span><span class="sk-tag">GitHub</span><span class="sk-tag">HTML/CSS/JS</span><span class="sk-tag">SQL</span><span class="sk-tag">Shell</span><span class="sk-tag">SPSS/AMOS</span></div></div>
-        <div class="sk-c"><div class="sk-bar"></div><div class="sk-head"><span class="sk-ico">🌏</span><h4>语言能力</h4></div><div class="sk-tags"><span class="sk-tag">CET-6 · 652 分</span><span class="sk-tag">CET-4 · 632 分</span><span class="sk-tag">普通话二级甲等</span></div></div>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="sd sd1"><span></span></div>
 
 <section id="featured" class="fp-bg reveal">
   <div class="container">
@@ -459,6 +470,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.3);padding:20px 64px;displa
     </div>
   </div>
 </section>
+<div class="sd sd1"><span></span></div>
 
 <section id="works" class="wk-bg reveal">
   <div class="container">
@@ -525,6 +537,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.3);padding:20px 64px;displa
     <div class="wk-dots" id="wkDots"></div>
   </div>
 </section>
+<div class="sd sd1"><span></span></div>
 
 <section id="contact" class="reveal">
   <div class="container">
@@ -602,7 +615,7 @@ document.querySelectorAll('.fcard').forEach(c=>{
   const N=items.length;
   let cur=0;
   const angleStep=360/N;
-  const R=420;
+  const R=480;
 
   // build dots
   items.forEach((_,i)=>{
@@ -623,8 +636,10 @@ document.querySelectorAll('.fcard').forEach(c=>{
   function go(idx){
     cur=((idx%N)+N)%N;
     track.style.transform=`rotateY(${-cur*angleStep}deg)`;
-    // active class
-    items.forEach((el,i)=>el.classList.toggle('active',i===cur));
+    items.forEach((el,i)=>{
+      el.classList.toggle('active',i===cur);
+      el.classList.toggle('dim',i!==cur);
+    });
     dotsWrap.querySelectorAll('.wk-dot').forEach((d,i)=>d.classList.toggle('active',i===cur));
   }
   items[0].classList.add('active');
