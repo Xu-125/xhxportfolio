@@ -574,7 +574,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.3);padding:20px 64px;displa
 
 <footer>
   <span>© 2026 Xu Haoxuan · AI × Communication × Coding</span>
-  <span id="busuanzi_container_site_pv" style="color:rgba(255,255,255,.4);">👁 <span id="busuanzi_value_site_pv"></span> views</span>
+  <span style="color:rgba(255,255,255,.4);">👁 <span id="pvCount">--</span> views</span>
 </footer>
 
 <script>
@@ -700,6 +700,15 @@ document.querySelectorAll('.wc,.sk-c').forEach(card=>{
     setTimeout(()=>d.remove(),600);
   });
 })();
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script>
+// ── Self-hosted page view counter (localStorage) ──
+(function(){
+  var k='xhx_pv';
+  var v=parseInt(localStorage.getItem(k)||'0',10)+1;
+  localStorage.setItem(k,v);
+  var el=document.getElementById('pvCount');
+  if(el)el.textContent=v.toLocaleString();
+})();
+</script>
 </body>
 </html>
