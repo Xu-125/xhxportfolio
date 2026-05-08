@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Xu Haoxuan · AI × Communication × Coding</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
@@ -21,8 +21,8 @@
   --yellow:#E8B830;
   --green:#1A7048;
   --serif:"Noto Serif SC",serif;
-  --sans:"DM Sans",-apple-system,"PingFang SC",sans-serif;
-  --mono:"DM Mono","SF Mono",monospace;
+  --sans:"Times New Roman","DM Sans",-apple-system,"PingFang SC",serif;
+  --mono:"Times New Roman","DM Mono","SF Mono",serif;
 }
 html{scroll-behavior:smooth;}
 body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.8;overflow-x:hidden;cursor:none;}
@@ -194,43 +194,41 @@ section{padding:100px 64px;position:relative;}
 
 /* WORKS — flip cards 2x2 grid */
 .wk-bg{background:var(--bg-warm);}
-.wk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:12px;}
-/* reuse fcard mechanics */
-.wk-fcard{height:240px;perspective:1100px;cursor:pointer;}
-.wk-fcard-in{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .75s cubic-bezier(.4,0,.2,1);}
-.wk-fcard:hover .wk-fcard-in,.wk-fcard.on .wk-fcard-in{transform:rotateY(180deg);}
-.wk-ff,.wk-fb{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;border:1px solid var(--line);}
-.wk-ff{background:var(--card);padding:30px 28px;display:flex;flex-direction:column;justify-content:space-between;}
-.wk-fb{transform:rotateY(180deg);padding:28px 26px;display:flex;flex-direction:column;justify-content:space-between;}
-.wk-fcard:nth-child(1) .wk-fb{background:var(--blue);}
-.wk-fcard:nth-child(2) .wk-fb{background:var(--red);}
-.wk-fcard:nth-child(3) .wk-fb{background:var(--green);}
-.wk-fcard:nth-child(4) .wk-fb{background:#7C4A00;}
-/* front */
-.wk-ff-top{}
-.wk-ff-num{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:3px;margin-bottom:10px;}
-.wk-ff-cat{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
-.wk-fcard:nth-child(1) .wk-ff-cat{color:var(--blue);}
-.wk-fcard:nth-child(2) .wk-ff-cat{color:var(--red);}
-.wk-fcard:nth-child(3) .wk-ff-cat{color:var(--green);}
-.wk-fcard:nth-child(4) .wk-ff-cat{color:#9B6200;}
-.wk-ff-title{font-family:var(--serif);font-size:18px;font-weight:500;color:var(--ink);line-height:1.35;}
-.wk-ff-bot{display:flex;justify-content:space-between;align-items:center;}
-.wk-ff-tags{display:flex;gap:5px;flex-wrap:wrap;}
-.wk-ff-tag{font-family:var(--mono);font-size:10px;padding:2px 8px;border:1px solid var(--line);color:var(--muted);}
-.wk-ff-hint{font-size:16px;color:var(--line);transition:color .3s,transform .3s;}
-.wk-fcard:hover .wk-ff-hint{transform:rotate(180deg);}
-.wk-fcard:nth-child(1):hover .wk-ff-hint{color:var(--blue);}
-.wk-fcard:nth-child(2):hover .wk-ff-hint{color:var(--red);}
-.wk-fcard:nth-child(3):hover .wk-ff-hint{color:var(--green);}
-.wk-fcard:nth-child(4):hover .wk-ff-hint{color:#9B6200;}
-/* back */
-.wk-fb-lbl{font-family:var(--mono);font-size:10px;letter-spacing:3px;color:rgba(255,255,255,.4);text-transform:uppercase;}
-.wk-fb-bar{width:28px;height:2px;background:rgba(255,255,255,.35);margin:10px 0;}
-.wk-fb-title{font-family:var(--serif);font-size:17px;font-weight:300;color:#fff;line-height:1.3;margin-bottom:8px;}
-.wk-fb-desc{font-size:12.5px;color:rgba(255,255,255,.72);line-height:1.85;font-weight:300;flex:1;}
-.wk-fb-link{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:2px;transition:gap .3s,border-color .3s;font-family:var(--mono);margin-top:14px;width:fit-content;}
-.wk-fb-link:hover{gap:12px;border-color:#fff;}
+/* ── CAROUSEL / turntable works ── */
+.wk-carousel{position:relative;height:320px;display:flex;align-items:center;justify-content:center;perspective:1400px;margin-top:20px;}
+.wk-track{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.4,0,.2,1);}
+.wk-item{position:absolute;width:300px;height:260px;left:50%;top:50%;margin-left:-150px;margin-top:-130px;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--card);border:1px solid var(--line);padding:32px 28px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;transition:box-shadow .35s;}
+.wk-item:hover{box-shadow:0 20px 48px rgba(0,0,0,.10);}
+.wk-item-num{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:3px;margin-bottom:10px;}
+.wk-item-cat{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-bottom:7px;}
+.wk-item:nth-child(1) .wk-item-cat{color:var(--blue);}
+.wk-item:nth-child(2) .wk-item-cat{color:var(--red);}
+.wk-item:nth-child(3) .wk-item-cat{color:var(--green);}
+.wk-item:nth-child(4) .wk-item-cat{color:#9B6200;}
+.wk-item-title{font-family:var(--serif);font-size:19px;font-weight:500;color:var(--ink);line-height:1.35;margin-bottom:8px;}
+.wk-item-desc{font-size:13px;color:var(--muted);line-height:1.75;font-weight:300;flex:1;}
+.wk-item-foot{display:flex;justify-content:space-between;align-items:center;margin-top:12px;}
+.wk-item-tags{display:flex;gap:5px;flex-wrap:wrap;}
+.wk-item-tag{font-family:var(--mono);font-size:10px;padding:2px 8px;border:1px solid var(--line);color:var(--muted);}
+.wk-item-link{font-family:var(--mono);font-size:11px;text-decoration:none;transition:gap .3s;display:inline-flex;align-items:center;gap:5px;}
+.wk-item:nth-child(1) .wk-item-link{color:var(--blue);}
+.wk-item:nth-child(2) .wk-item-link{color:var(--red);}
+.wk-item:nth-child(3) .wk-item-link{color:var(--green);}
+.wk-item:nth-child(4) .wk-item-link{color:#9B6200;}
+.wk-item-link:hover{gap:10px;}
+/* accent left bar per card */
+.wk-item::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;}
+.wk-item:nth-child(1)::before{background:var(--blue);}
+.wk-item:nth-child(2)::before{background:var(--red);}
+.wk-item:nth-child(3)::before{background:var(--green);}
+.wk-item:nth-child(4)::before{background:var(--yellow);}
+/* nav arrows */
+.wk-nav{display:flex;justify-content:center;gap:16px;margin-top:18px;}
+.wk-btn{width:40px;height:40px;border:1.5px solid var(--line);background:var(--card);display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--muted);cursor:pointer;transition:all .25s;font-family:var(--mono);}
+.wk-btn:hover{border-color:var(--blue);color:var(--blue);background:rgba(22,56,184,.04);}
+.wk-dots{display:flex;gap:8px;align-items:center;margin-top:14px;justify-content:center;}
+.wk-dot{width:8px;height:8px;border-radius:50%;border:1.5px solid var(--line);background:transparent;transition:all .3s;cursor:pointer;}
+.wk-dot.active{background:var(--blue);border-color:var(--blue);}
 
 /* CONTACT */
 .ct-inner{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:20px;}
@@ -290,12 +288,16 @@ footer{background:var(--ink);color:rgba(255,255,255,.3);padding:20px 64px;displa
 
 <nav id="nav">
   <a class="nav-logo" href="#">
-    <!-- Hand-drawn XH monogram logo - flowing curves -->
-    <svg class="logo-svg" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M6 8 Q10 18 14 18 Q10 18 6 28" stroke="#1638B8" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-      <path d="M14 8 Q10 18 6 28" stroke="#D42B24" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-      <path d="M20 8 L20 18 L30 8 M20 20 L20 28" stroke="#1A7048" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      <circle cx="28" cy="24" r="2" fill="#E8B830"/>
+    <!-- Lively abstract logo: overlapping colorful rings + dot -->
+    <svg class="logo-svg" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- outer arc blue -->
+      <path d="M8 30 A16 16 0 1 1 30 8" stroke="#1638B8" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <!-- inner arc red -->
+      <path d="M14 26 A10 10 0 1 1 26 14" stroke="#D42B24" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      <!-- center dot yellow -->
+      <circle cx="19" cy="19" r="3.5" fill="#E8B830"/>
+      <!-- small green accent dot -->
+      <circle cx="30" cy="8" r="2.5" fill="#1A7048"/>
     </svg>
     <span class="nav-logo-name">Xu Haoxuan</span>
   </a>
@@ -350,68 +352,67 @@ footer{background:var(--ink);color:rgba(255,255,255,.3);padding:20px 64px;displa
         <line x1="1" y1="6" x2="11" y2="6" stroke="#1638B8" stroke-width="1.5" stroke-linecap="round" opacity=".6"/>
       </svg>
 
-      <!-- flat-color avatar: blue hair shoulder-length, round warm face, yellow blush circles, big white smile, blue top -->
-      <svg viewBox="0 0 260 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+      <!-- sticker-style avatar: geometric flat shapes, minimal lines, cheerful -->
+      <svg viewBox="0 0 260 310" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;filter:drop-shadow(0 16px 36px rgba(22,56,184,.13));">
 
-        <!-- HAIR back layer (behind face) - indigo blue flat fill -->
-        <path d="M60 118 Q48 160 52 210 Q54 240 68 256 Q80 265 95 260 Q88 255 85 240 Q78 210 80 175 Q74 148 75 118Z" fill="#1638B8"/>
-        <path d="M200 118 Q212 160 208 210 Q206 240 192 256 Q180 265 165 260 Q172 255 175 240 Q182 210 180 175 Q186 148 185 118Z" fill="#1638B8"/>
+        <!-- shadow ellipse -->
+        <ellipse cx="130" cy="298" rx="70" ry="10" fill="rgba(0,0,0,.06)"/>
 
-        <!-- HAIR top silhouette - flat indigo, rounded like reference -->
-        <path d="M75 118 C75 65 105 44 130 42 C155 44 185 65 185 118 C175 105 130 100 85 105 Z" fill="#1638B8"/>
+        <!-- HAIR back (behind face) - flat indigo blob -->
+        <path d="M65 128 Q55 165 58 215 Q60 248 80 262 Q90 258 95 250 Q88 240 85 210 Q82 175 84 138Z" fill="#1638B8"/>
+        <path d="M195 128 Q205 165 202 215 Q200 248 180 262 Q170 258 165 250 Q172 240 175 210 Q178 175 176 138Z" fill="#1638B8"/>
 
-        <!-- hair inner volume lines (lighter blue) -->
-        <path d="M82 108 Q78 135 80 165" stroke="#3D5FD9" stroke-width="3" stroke-linecap="round" fill="none"/>
-        <path d="M178 108 Q182 135 180 165" stroke="#3D5FD9" stroke-width="3" stroke-linecap="round" fill="none"/>
-        <!-- hair highlight -->
-        <path d="M108 55 Q122 48 138 50" stroke="#6B8EF0" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+        <!-- HAIR top — smooth indigo dome -->
+        <path d="M72 128 C68 58 112 36 130 36 C148 36 192 58 188 128 C178 112 130 108 82 112 Z" fill="#1638B8"/>
 
-        <!-- FACE - warm round, filled -->
-        <ellipse cx="130" cy="140" rx="55" ry="58" fill="#FDDEC0"/>
+        <!-- hair sheen stripe -->
+        <path d="M100 52 Q118 44 136 46" stroke="#4A72F0" stroke-width="5" stroke-linecap="round" fill="none"/>
 
-        <!-- EYES - simple arc + dot style, like reference -->
-        <!-- left eye closed-happy arc -->
-        <path d="M103 130 Q112 122 121 130" stroke="#0D0C09" stroke-width="3" stroke-linecap="round" fill="none"/>
-        <!-- left pupil dot -->
-        <circle cx="112" cy="132" r="3.5" fill="#0D0C09"/>
-        <!-- right eye -->
-        <path d="M139 130 Q148 122 157 130" stroke="#0D0C09" stroke-width="3" stroke-linecap="round" fill="none"/>
-        <circle cx="148" cy="132" r="3.5" fill="#0D0C09"/>
-        <!-- eye shine dots -->
-        <circle cx="114" cy="130" r="1.5" fill="white"/>
-        <circle cx="150" cy="130" r="1.5" fill="white"/>
+        <!-- FACE — large warm circle, no outline -->
+        <circle cx="130" cy="148" r="64" fill="#FDDEC0"/>
 
-        <!-- EYEBROWS - simple short arcs -->
-        <path d="M101 118 Q112 112 122 117" stroke="#0D0C09" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-        <path d="M138 117 Q148 112 159 118" stroke="#0D0C09" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <!-- CHEEKS — soft yellow blobs -->
+        <ellipse cx="88" cy="168" rx="18" ry="12" fill="#F5C842" opacity=".6"/>
+        <ellipse cx="172" cy="168" rx="18" ry="12" fill="#F5C842" opacity=".6"/>
 
-        <!-- NOSE - tiny dot -->
-        <circle cx="130" cy="153" r="2.5" fill="rgba(13,12,9,0.22)"/>
+        <!-- EYES — big round pupils with white shine, no outline ring -->
+        <circle cx="108" cy="138" r="12" fill="#0D0C09"/>
+        <circle cx="152" cy="138" r="12" fill="#0D0C09"/>
+        <circle cx="112" cy="134" r="4" fill="white"/>
+        <circle cx="156" cy="134" r="4" fill="white"/>
 
-        <!-- MOUTH - big D-shape open smile with white teeth, like reference -->
-        <path d="M108 168 Q130 188 152 168" fill="#0D0C09"/>
-        <path d="M111 170 Q130 184 149 170 Q145 176 130 178 Q115 176 111 170Z" fill="white"/>
+        <!-- EYEBROWS — thick soft arcs -->
+        <path d="M96 122 Q108 115 120 120" stroke="#0D0C09" stroke-width="4" stroke-linecap="round" fill="none"/>
+        <path d="M140 120 Q152 115 164 122" stroke="#0D0C09" stroke-width="4" stroke-linecap="round" fill="none"/>
 
-        <!-- CHEEKS - big yellow blobs like reference image 2 -->
-        <ellipse cx="96" cy="158" rx="14" ry="10" fill="#E8B830" opacity=".55"/>
-        <ellipse cx="164" cy="158" rx="14" ry="10" fill="#E8B830" opacity=".55"/>
+        <!-- NOSE — tiny round dot -->
+        <circle cx="130" cy="158" r="3.5" fill="rgba(13,12,9,.2)"/>
 
-        <!-- EAR dot accessory (small circle earring) -->
-        <circle cx="75" cy="148" r="5" fill="#FDDEC0" stroke="#0D0C09" stroke-width="2"/>
-        <circle cx="76" cy="149" r="2.5" fill="#D42B24"/>
-        <circle cx="185" cy="148" r="5" fill="#FDDEC0" stroke="#0D0C09" stroke-width="2"/>
-        <circle cx="186" cy="149" r="2.5" fill="#D42B24"/>
+        <!-- MOUTH — big filled U smile + white teeth row -->
+        <path d="M106 175 Q130 198 154 175" fill="#0D0C09"/>
+        <ellipse cx="130" cy="187" rx="18" ry="8" fill="white"/>
+
+        <!-- EAR lobes -->
+        <circle cx="66" cy="152" r="9" fill="#FDDEC0"/>
+        <circle cx="194" cy="152" r="9" fill="#FDDEC0"/>
+        <!-- red dot earrings -->
+        <circle cx="66" cy="152" r="4" fill="#D42B24"/>
+        <circle cx="194" cy="152" r="4" fill="#D42B24"/>
 
         <!-- NECK -->
-        <rect x="118" y="196" width="24" height="22" rx="4" fill="#FDDEC0"/>
+        <rect x="116" y="208" width="28" height="22" rx="6" fill="#FDDEC0"/>
 
-        <!-- BODY - blue round top like reference, flat color -->
-        <path d="M62 270 Q78 240 118 222 Q130 226 142 222 Q182 240 198 270 Q205 285 202 300 L58 300 Q55 285 62 270Z" fill="#1638B8"/>
-        <!-- shirt collar line -->
-        <path d="M118 222 Q130 242 142 222" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none" opacity=".6"/>
-        <!-- shoulder highlight -->
-        <path d="M70 268 Q85 252 105 248" stroke="#3D5FD9" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-        <path d="M190 268 Q175 252 155 248" stroke="#3D5FD9" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <!-- BODY — rounded rectangle, indigo blue -->
+        <rect x="58" y="228" width="144" height="72" rx="28" fill="#1638B8"/>
+
+        <!-- shirt collar highlight -->
+        <path d="M116 230 Q130 250 144 230" stroke="rgba(255,255,255,.5)" stroke-width="3" stroke-linecap="round" fill="none"/>
+
+        <!-- shirt decorative dots (mondrian-style) -->
+        <circle cx="100" cy="258" r="5" fill="rgba(255,255,255,.25)"/>
+        <circle cx="160" cy="258" r="5" fill="rgba(255,255,255,.25)"/>
+        <circle cx="130" cy="272" r="4" fill="rgba(232,184,48,.4)"/>
+
       </svg>
     </div>
   </div>
@@ -502,114 +503,65 @@ footer{background:var(--ink);color:rgba(255,255,255,.3);padding:20px 64px;displa
   <div class="container">
     <div class="s-label">PORTFOLIO</div>
     <h2 class="s-h">内容作品集</h2>
-    <p class="s-p">以 AI Native 思维做内容：从洞察用户、打磨叙事，到精准分发与可视化落地。悬停翻转查看详情。</p>
-    <div class="wk-grid stagger">
-
-      <!-- card 1 -->
-      <div class="wk-fcard" tabindex="0">
-        <div class="wk-fcard-in">
-          <div class="wk-ff">
-            <div class="wk-ff-top">
-              <div class="wk-ff-num">01</div>
-              <div class="wk-ff-cat">DEEP REPORT</div>
-              <div class="wk-ff-title">《看不见的八千万》</div>
-            </div>
-            <div class="wk-ff-bot">
-              <div class="wk-ff-tags"><span class="wk-ff-tag">#懂用户</span><span class="wk-ff-tag">#数据叙事</span></div>
-              <div class="wk-ff-hint">↺</div>
-            </div>
+    <p class="s-p">以 AI Native 思维做内容：从洞察用户、打磨叙事，到精准分发与可视化落地。点击箭头轮转浏览。</p>
+    <!-- 3D turntable carousel -->
+    <div class="wk-carousel">
+      <div class="wk-track" id="wkTrack">
+        <div class="wk-item">
+          <div>
+            <div class="wk-item-num">01</div>
+            <div class="wk-item-cat">DEEP REPORT</div>
+            <div class="wk-item-title">《看不见的八千万》</div>
+            <div class="wk-item-desc">用结构化叙事让冰冷数据「开口说话」——从用户洞察出发，把宏大社会议题拆解成普通人能共情的故事。</div>
           </div>
-          <div class="wk-fb">
-            <div>
-              <div class="wk-fb-lbl">DEEP REPORT</div>
-              <div class="wk-fb-bar"></div>
-              <div class="wk-fb-title">《看不见的八千万》</div>
-              <div class="wk-fb-desc">用结构化叙事让冰冷数据「开口说话」——从用户洞察出发，把宏大社会议题拆解成普通人能共情的故事。</div>
-            </div>
-            <a href="https://kdocs.cn/l/cc2rvjvGtSb6" target="_blank" rel="noopener" class="wk-fb-link">阅读全文 →</a>
+          <div class="wk-item-foot">
+            <div class="wk-item-tags"><span class="wk-item-tag">#懂用户</span><span class="wk-item-tag">#数据叙事</span></div>
+            <a href="https://kdocs.cn/l/cc2rvjvGtSb6" target="_blank" rel="noopener" class="wk-item-link">阅读 →</a>
+          </div>
+        </div>
+        <div class="wk-item">
+          <div>
+            <div class="wk-item-num">02</div>
+            <div class="wk-item-cat">NEWS · PEOPLE.CN</div>
+            <div class="wk-item-title">人民网 · 财经频道刊发</div>
+            <div class="wk-item-desc">把内容做对、把渠道选对——作品被人民网财经频道收录，验证了「内容契合度 + 渠道判断力」的双重能力。</div>
+          </div>
+          <div class="wk-item-foot">
+            <div class="wk-item-tags"><span class="wk-item-tag">#懂传播</span><span class="wk-item-tag">#渠道精准</span></div>
+            <a href="http://finance.people.com.cn/n1/2024/0730/c1004-40288626.html" target="_blank" rel="noopener" class="wk-item-link">查看 →</a>
+          </div>
+        </div>
+        <div class="wk-item">
+          <div>
+            <div class="wk-item-num">03</div>
+            <div class="wk-item-cat">NEWS · CHINANEWS</div>
+            <div class="wk-item-title">中国新闻网报道</div>
+            <div class="wk-item-desc">面向全球华人华侨用户做内容——从受众语境出发设计选题与措辞，让中国故事在海外也能被听懂、被转发。</div>
+          </div>
+          <div class="wk-item-foot">
+            <div class="wk-item-tags"><span class="wk-item-tag">#懂用户</span><span class="wk-item-tag">#跨文化叙事</span></div>
+            <a href="https://www.chinanews.com/sh/2024/07-25/10257006.shtml" target="_blank" rel="noopener" class="wk-item-link">查看 →</a>
+          </div>
+        </div>
+        <div class="wk-item">
+          <div>
+            <div class="wk-item-num">04</div>
+            <div class="wk-item-cat">INFOGRAPHIC</div>
+            <div class="wk-item-title">暴雨预警避险知识图解</div>
+            <div class="wk-item-desc">把权威信息变成可视化产品——为人民网设计 9 条防汛避险图解，兼顾信息密度与传播友好度。</div>
+          </div>
+          <div class="wk-item-foot">
+            <div class="wk-item-tags"><span class="wk-item-tag">#能落地</span><span class="wk-item-tag">#可视化产品</span></div>
+            <a href="http://finance.people.com.cn/n1/2024/0805/c1004-40292669.html" target="_blank" rel="noopener" class="wk-item-link">查看 →</a>
           </div>
         </div>
       </div>
-
-      <!-- card 2 -->
-      <div class="wk-fcard" tabindex="0">
-        <div class="wk-fcard-in">
-          <div class="wk-ff">
-            <div class="wk-ff-top">
-              <div class="wk-ff-num">02</div>
-              <div class="wk-ff-cat">NEWS · PEOPLE.CN</div>
-              <div class="wk-ff-title">人民网 · 财经频道刊发</div>
-            </div>
-            <div class="wk-ff-bot">
-              <div class="wk-ff-tags"><span class="wk-ff-tag">#懂传播</span><span class="wk-ff-tag">#渠道精准</span></div>
-              <div class="wk-ff-hint">↺</div>
-            </div>
-          </div>
-          <div class="wk-fb">
-            <div>
-              <div class="wk-fb-lbl">NEWS · PEOPLE.CN</div>
-              <div class="wk-fb-bar"></div>
-              <div class="wk-fb-title">人民网 · 财经频道刊发</div>
-              <div class="wk-fb-desc">把内容做对、把渠道选对——作品被人民网财经频道收录，验证了「内容契合度 + 渠道判断力」的双重能力。</div>
-            </div>
-            <a href="http://finance.people.com.cn/n1/2024/0730/c1004-40288626.html" target="_blank" rel="noopener" class="wk-fb-link">查看原文 →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- card 3 -->
-      <div class="wk-fcard" tabindex="0">
-        <div class="wk-fcard-in">
-          <div class="wk-ff">
-            <div class="wk-ff-top">
-              <div class="wk-ff-num">03</div>
-              <div class="wk-ff-cat">NEWS · CHINANEWS</div>
-              <div class="wk-ff-title">中国新闻网报道</div>
-            </div>
-            <div class="wk-ff-bot">
-              <div class="wk-ff-tags"><span class="wk-ff-tag">#懂用户</span><span class="wk-ff-tag">#跨文化叙事</span></div>
-              <div class="wk-ff-hint">↺</div>
-            </div>
-          </div>
-          <div class="wk-fb">
-            <div>
-              <div class="wk-fb-lbl">NEWS · CHINANEWS</div>
-              <div class="wk-fb-bar"></div>
-              <div class="wk-fb-title">中国新闻网报道</div>
-              <div class="wk-fb-desc">面向全球华人华侨用户做内容——从受众语境出发设计选题与措辞，让中国故事在海外也能被听懂、被转发。</div>
-            </div>
-            <a href="https://www.chinanews.com/sh/2024/07-25/10257006.shtml" target="_blank" rel="noopener" class="wk-fb-link">查看原文 →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- card 4 -->
-      <div class="wk-fcard" tabindex="0">
-        <div class="wk-fcard-in">
-          <div class="wk-ff">
-            <div class="wk-ff-top">
-              <div class="wk-ff-num">04</div>
-              <div class="wk-ff-cat">INFOGRAPHIC</div>
-              <div class="wk-ff-title">暴雨预警避险知识图解</div>
-            </div>
-            <div class="wk-ff-bot">
-              <div class="wk-ff-tags"><span class="wk-ff-tag">#能落地</span><span class="wk-ff-tag">#可视化产品</span></div>
-              <div class="wk-ff-hint">↺</div>
-            </div>
-          </div>
-          <div class="wk-fb">
-            <div>
-              <div class="wk-fb-lbl">INFOGRAPHIC</div>
-              <div class="wk-fb-bar"></div>
-              <div class="wk-fb-title">暴雨预警避险知识图解</div>
-              <div class="wk-fb-desc">把权威信息变成可视化产品——为人民网设计 9 条防汛避险图解，兼顾信息密度与传播友好度。</div>
-            </div>
-            <a href="http://finance.people.com.cn/n1/2024/0805/c1004-40292669.html" target="_blank" rel="noopener" class="wk-fb-link">查看原文 →</a>
-          </div>
-        </div>
-      </div>
-
     </div>
+    <div class="wk-nav">
+      <button class="wk-btn" id="wkPrev">←</button>
+      <button class="wk-btn" id="wkNext">→</button>
+    </div>
+    <div class="wk-dots" id="wkDots"></div>
   </div>
 </section>
 
@@ -675,11 +627,50 @@ setTimeout(tp,800);
 const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on');}),{threshold:.07});
 document.querySelectorAll('.reveal,.stagger').forEach(el=>obs.observe(el));
 
-// flip (featured + works)
-document.querySelectorAll('.fcard,.wk-fcard').forEach(c=>{
+// flip (featured only now)
+document.querySelectorAll('.fcard').forEach(c=>{
   c.addEventListener('click',()=>c.classList.toggle('on'));
   c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')c.classList.toggle('on');});
 });
+
+// ── 3D turntable carousel ──
+(function(){
+  const track=document.getElementById('wkTrack');
+  const items=Array.from(track.querySelectorAll('.wk-item'));
+  const dotsWrap=document.getElementById('wkDots');
+  const N=items.length;
+  let cur=0;
+  const angleStep=360/N;
+
+  // build dots
+  items.forEach((_,i)=>{
+    const d=document.createElement('div');
+    d.className='wk-dot'+(i===0?' active':'');
+    d.addEventListener('click',()=>go(i));
+    dotsWrap.appendChild(d);
+  });
+
+  // position items on the cylinder
+  const RADIUS=320;
+  items.forEach((el,i)=>{
+    const angle=angleStep*i;
+    el.style.transform=`rotateY(${angle}deg) translateZ(${RADIUS}px)`;
+  });
+
+  function go(idx){
+    cur=((idx%N)+N)%N;
+    track.style.transform=`rotateY(${-cur*angleStep}deg)`;
+    dotsWrap.querySelectorAll('.wk-dot').forEach((d,i)=>d.classList.toggle('active',i===cur));
+  }
+
+  document.getElementById('wkPrev').addEventListener('click',()=>go(cur-1));
+  document.getElementById('wkNext').addEventListener('click',()=>go(cur+1));
+  // keyboard
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowLeft')go(cur-1);
+    if(e.key==='ArrowRight')go(cur+1);
+  });
+})();
 
 // 3D tilt on why cards
 document.querySelectorAll('.wc,.sk-c').forEach(card=>{
