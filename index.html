@@ -45,14 +45,14 @@ nav a::after{content:"";position:absolute;bottom:-1px;left:0;width:0;height:1.5p
 nav a:hover::after{width:100%;}
 
 /* HERO */
-.hero{min-height:100vh;display:grid;grid-template-columns:1fr 440px;align-items:center;padding:130px 64px 80px;position:relative;overflow:hidden;gap:40px;}
+.hero{min-height:100vh;display:flex;align-items:center;padding:130px 80px 80px;position:relative;overflow:hidden;}.hero-left{max-width:720px;}
 .hero-bg{position:absolute;inset:0;pointer-events:none;}
 /* bg color right panel */
-.hero-bg::before{content:"";position:absolute;top:0;right:0;width:460px;bottom:0;background:var(--bg-warm);}
+
 /* mondrian lines - thin ruled lines suggesting movement */
-.hero-bg::after{content:"";position:absolute;top:0;right:455px;width:1px;bottom:0;background:var(--line);}
+
 .hero-accent-top{position:absolute;top:0;right:0;width:460px;height:4px;background:linear-gradient(to right,var(--red) 30%,var(--yellow) 30% 60%,var(--green) 60%);}
-.hero-accent-right{position:absolute;top:4px;right:0;width:4px;height:200px;background:var(--blue);}
+
 .hero-accent-bottom{position:absolute;bottom:0;right:0;width:460px;height:3px;background:var(--blue);}
 
 /* decorative mondrian blocks floating */
@@ -82,20 +82,19 @@ h1.h-title .c-green{color:var(--green);}
 .chip:nth-child(3):hover{border-color:var(--green);color:var(--green);background:rgba(26,112,72,.04);}
 .chip:nth-child(4):hover{border-color:var(--yellow);color:var(--yellow);background:rgba(232,184,48,.06);}
 
-/* AVATAR AREA */
-.hero-right{position:relative;z-index:3;display:flex;align-items:center;justify-content:center;}
-.av-wrap{position:relative;width:300px;height:340px;}
+
+
 /* floating accent dots */
-.av-dot{position:absolute;border-radius:50%;animation:floatD 4s ease-in-out infinite;}
-.av-dot.a1{width:12px;height:12px;background:var(--red);top:10px;right:20px;animation-delay:0s;}
-.av-dot.a2{width:8px;height:8px;background:var(--yellow);bottom:50px;left:5px;animation-delay:.9s;}
-.av-dot.a3{width:6px;height:6px;background:var(--green);top:80px;left:-10px;animation-delay:1.8s;}
-@keyframes floatD{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+
+
+
+
+50%{transform:translateY(-12px);}}
 /* sparkle cross */
-.av-spark{position:absolute;animation:spark 3s ease-in-out infinite;}
-.av-spark.s1{top:0;left:30px;animation-delay:0s;}
-.av-spark.s2{bottom:20px;right:10px;animation-delay:1.5s;}
-@keyframes spark{0%,100%{opacity:.2;transform:scale(.8);}50%{opacity:1;transform:scale(1.2);}}
+
+
+
+50%{opacity:1;transform:scale(1.2);}}
 
 /* SECTION */
 section{padding:100px 64px;position:relative;}
@@ -271,7 +270,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.3);padding:20px 64px;displa
 .stagger.on>*:nth-child(4){transition-delay:.28s;}
 
 @media(max-width:1080px){
-  .hero{grid-template-columns:1fr;}.hero-right{display:none;}
+  .hero{grid-template-columns:1fr;}
   .why-grid,.flip-grid{grid-template-columns:1fr;}
   .ct-inner,.about-grid{grid-template-columns:1fr;}
 }
@@ -313,7 +312,6 @@ footer{background:var(--ink);color:rgba(255,255,255,.3);padding:20px 64px;displa
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-accent-top"></div>
-  <div class="hero-accent-right"></div>
   <div class="hero-accent-bottom"></div>
   <div class="mb mb1"></div>
   <div class="mb mb2"></div>
@@ -339,83 +337,6 @@ footer{background:var(--ink);color:rgba(255,255,255,.3);padding:20px 64px;displa
     </div>
   </div>
 
-  <!-- AVATAR: flat-color cartoon girl, style 2 (blue hair, round face, yellow blush, big smile) -->
-  <div class="hero-right">
-    <div class="av-wrap">
-      <div class="av-dot a1"></div><div class="av-dot a2"></div><div class="av-dot a3"></div>
-      <svg class="av-spark s1" width="16" height="16" viewBox="0 0 16 16">
-        <line x1="8" y1="1" x2="8" y2="15" stroke="#E8B830" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="1" y1="8" x2="15" y2="8" stroke="#E8B830" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
-      <svg class="av-spark s2" width="12" height="12" viewBox="0 0 12 12">
-        <line x1="6" y1="1" x2="6" y2="11" stroke="#1638B8" stroke-width="1.5" stroke-linecap="round" opacity=".6"/>
-        <line x1="1" y1="6" x2="11" y2="6" stroke="#1638B8" stroke-width="1.5" stroke-linecap="round" opacity=".6"/>
-      </svg>
-
-      <!-- sticker-style avatar: geometric flat shapes, minimal lines, cheerful -->
-      <svg viewBox="0 0 260 310" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;filter:drop-shadow(0 16px 36px rgba(22,56,184,.13));">
-
-        <!-- shadow ellipse -->
-        <ellipse cx="130" cy="298" rx="70" ry="10" fill="rgba(0,0,0,.06)"/>
-
-        <!-- HAIR back (behind face) - flat indigo blob -->
-        <path d="M65 128 Q55 165 58 215 Q60 248 80 262 Q90 258 95 250 Q88 240 85 210 Q82 175 84 138Z" fill="#1638B8"/>
-        <path d="M195 128 Q205 165 202 215 Q200 248 180 262 Q170 258 165 250 Q172 240 175 210 Q178 175 176 138Z" fill="#1638B8"/>
-
-        <!-- HAIR top — smooth indigo dome -->
-        <path d="M72 128 C68 58 112 36 130 36 C148 36 192 58 188 128 C178 112 130 108 82 112 Z" fill="#1638B8"/>
-
-        <!-- hair sheen stripe -->
-        <path d="M100 52 Q118 44 136 46" stroke="#4A72F0" stroke-width="5" stroke-linecap="round" fill="none"/>
-
-        <!-- FACE — large warm circle, no outline -->
-        <circle cx="130" cy="148" r="64" fill="#FDDEC0"/>
-
-        <!-- CHEEKS — soft yellow blobs -->
-        <ellipse cx="88" cy="168" rx="18" ry="12" fill="#F5C842" opacity=".6"/>
-        <ellipse cx="172" cy="168" rx="18" ry="12" fill="#F5C842" opacity=".6"/>
-
-        <!-- EYES — big round pupils with white shine, no outline ring -->
-        <circle cx="108" cy="138" r="12" fill="#0D0C09"/>
-        <circle cx="152" cy="138" r="12" fill="#0D0C09"/>
-        <circle cx="112" cy="134" r="4" fill="white"/>
-        <circle cx="156" cy="134" r="4" fill="white"/>
-
-        <!-- EYEBROWS — thick soft arcs -->
-        <path d="M96 122 Q108 115 120 120" stroke="#0D0C09" stroke-width="4" stroke-linecap="round" fill="none"/>
-        <path d="M140 120 Q152 115 164 122" stroke="#0D0C09" stroke-width="4" stroke-linecap="round" fill="none"/>
-
-        <!-- NOSE — tiny round dot -->
-        <circle cx="130" cy="158" r="3.5" fill="rgba(13,12,9,.2)"/>
-
-        <!-- MOUTH — big filled U smile + white teeth row -->
-        <path d="M106 175 Q130 198 154 175" fill="#0D0C09"/>
-        <ellipse cx="130" cy="187" rx="18" ry="8" fill="white"/>
-
-        <!-- EAR lobes -->
-        <circle cx="66" cy="152" r="9" fill="#FDDEC0"/>
-        <circle cx="194" cy="152" r="9" fill="#FDDEC0"/>
-        <!-- red dot earrings -->
-        <circle cx="66" cy="152" r="4" fill="#D42B24"/>
-        <circle cx="194" cy="152" r="4" fill="#D42B24"/>
-
-        <!-- NECK -->
-        <rect x="116" y="208" width="28" height="22" rx="6" fill="#FDDEC0"/>
-
-        <!-- BODY — rounded rectangle, indigo blue -->
-        <rect x="58" y="228" width="144" height="72" rx="28" fill="#1638B8"/>
-
-        <!-- shirt collar highlight -->
-        <path d="M116 230 Q130 250 144 230" stroke="rgba(255,255,255,.5)" stroke-width="3" stroke-linecap="round" fill="none"/>
-
-        <!-- shirt decorative dots (mondrian-style) -->
-        <circle cx="100" cy="258" r="5" fill="rgba(255,255,255,.25)"/>
-        <circle cx="160" cy="258" r="5" fill="rgba(255,255,255,.25)"/>
-        <circle cx="130" cy="272" r="4" fill="rgba(232,184,48,.4)"/>
-
-      </svg>
-    </div>
-  </div>
 </section>
 
 <section id="why" class="why-bg reveal">
