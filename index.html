@@ -184,11 +184,13 @@
  .stat-mini-num { font-size: 26px; font-weight: 800; color: var(--ink); line-height: 1.1; margin-bottom: 6px; }
  .stat-mini-num small { font-size: 14px; color: var(--muted); }
  .stat-mini-label { font-size: 11.5px; color: var(--ink-soft); line-height: 1.5; }
- .featured { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+ .featured { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
  .feature-card { background: var(--card); border-radius: 24px; padding: 0; transition: all .5s cubic-bezier(.4,0,.2,1); border: 1.5px solid var(--ink); position: relative; overflow: hidden; box-shadow: 8px 8px 0 var(--c-orange); }
  .feature-card:nth-child(2) { box-shadow: 8px 8px 0 var(--c-rose); }
+ .feature-card:nth-child(3) { box-shadow: 8px 8px 0 var(--c-sage); }
  .feature-card:hover { transform: translate(-4px,-4px); box-shadow: 14px 14px 0 var(--c-orange); }
  .feature-card:nth-child(2):hover { box-shadow: 14px 14px 0 var(--c-rose); }
+ .feature-card:nth-child(3):hover { box-shadow: 14px 14px 0 var(--c-sage); }
  .feature-preview { width: 100%; height: 280px; position: relative; overflow: hidden; border-bottom: 1.5px solid var(--ink); }
  .browser-bar { position: absolute; top: 0; left: 0; right: 0; height: 36px; background: var(--card); display: flex; align-items: center; padding: 0 14px; gap: 6px; z-index: 3; border-bottom: 1.5px solid var(--ink); }
  .browser-bar .dot { width: 11px; height: 11px; border-radius: 50%; border: 1.5px solid var(--ink); }
@@ -221,8 +223,10 @@
  .feature-card p { color: var(--muted); margin-bottom: 22px; line-height: 1.85; font-size: 14.5px; }
  .feature-link { display: inline-flex; align-items: center; gap: 8px; color: var(--card); font-weight: 600; font-size: 14px; text-decoration: none; padding: 13px 26px; border-radius: 28px; background: var(--ink); border: 2px solid var(--ink); transition: all .4s; box-shadow: 4px 4px 0 var(--c-orange); }
  .feature-card:nth-child(2) .feature-link { box-shadow: 4px 4px 0 var(--c-rose); }
+ .feature-card:nth-child(3) .feature-link { box-shadow: 4px 4px 0 var(--c-sage); }
  .feature-link:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--c-orange); }
  .feature-card:nth-child(2) .feature-link:hover { box-shadow: 6px 6px 0 var(--c-rose); }
+ .feature-card:nth-child(3) .feature-link:hover { box-shadow: 6px 6px 0 var(--c-sage); }
  .work-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; }
  .work-card { background: var(--card); border-radius: 20px; padding: 0; transition: all .5s cubic-bezier(.4,0,.2,1); border: 1.5px solid var(--ink); display: flex; flex-direction: column; position: relative; overflow: hidden; text-decoration: none; color: var(--ink); }
  .work-card.cc1 { box-shadow: 5px 5px 0 var(--c-orange); }
@@ -442,16 +446,29 @@
    <div class="feature-card">
     <div class="feature-preview">
      <div class="browser-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url">xu-125.github.io/ownedbyxhx/</span></div>
-     <div class="mock-web">
-      <div class="web-nav"><div class="web-logo">XHX ✦</div><div class="web-menu"><span></span><span></span><span></span></div></div>
-      <div class="web-hero"><div class="web-tag">✦ PORTFOLIO</div><div class="web-title">网页设计</div><div class="web-blocks"><div class="web-block"></div><div class="web-block"></div><div class="web-block"></div></div></div>
-     </div>
+     <a href="https://xu-125.github.io/ownedbyxhx/" target="_blank" rel="noopener" style="display:block;position:absolute;top:36px;left:0;right:0;bottom:0;overflow:hidden;">
+      <img src="images/thesis.png" alt="毕设网页设计预览" style="width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .5s;">
+     </a>
     </div>
     <div class="feature-body">
      <span class="feature-tag">💻 网页设计</span>
      <h3>展示网页设计</h3>
      <p>从 0 到 1 与 AI 协同设计开发的个人展示网页（建议电脑端访问）。它既是我的作品，也是我把"内容审美 + 工程能力"两条线长在一起的体现。</p>
      <a href="https://xu-125.github.io/ownedbyxhx/" target="_blank" rel="noopener" class="feature-link">🚀 访 问 网 站 →</a>
+    </div>
+   </div>
+   <div class="feature-card">
+    <div class="feature-preview">
+     <div class="browser-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url">odyssey-guide-wwk8.vercel.app</span></div>
+     <a href="https://odyssey-guide-wwk8.vercel.app/" target="_blank" rel="noopener" style="display:block;position:absolute;top:36px;left:0;right:0;bottom:0;overflow:hidden;">
+      <img src="images/odyssey.png" alt="Odyssey Guide 预览" style="width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s;">
+     </a>
+    </div>
+    <div class="feature-body">
+     <span class="feature-tag">🌐 编码实验</span>
+     <h3>Odyssey Guide</h3>
+     <p>自主编码的沉浸式叙事导览网页——从零到一独立搭建，探索用代码表达人文叙事的边界，是 AI Native 工作流下的一次技术实践。</p>
+     <a href="https://odyssey-guide-wwk8.vercel.app/" target="_blank" rel="noopener" class="feature-link">🚀 立 即 访 问 →</a>
     </div>
    </div>
   </div>
